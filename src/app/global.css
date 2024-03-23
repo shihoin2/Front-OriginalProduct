@@ -189,5 +189,19 @@ div.cards {
 /******************* map-page *******************/
 div.google_map {
   width: 100%;
+  position: relative;
 }
 /******************* map-page *******************/
+/******************* searchBox *******************/
+input.search_box {
+  /* width: 100%; */
+  position: absolute;
+  /* position: fixed; */
+  z-index: 10;
+}
+/******************* searchBox *******************/
+/******************* shop *******************/
+div.shop_map {
+  align-self: center;
+}
+/******************* shop *******************/

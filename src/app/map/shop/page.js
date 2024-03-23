@@ -1,8 +1,7 @@
 "use client"
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import Map from "@/components/ShopMap";
-import { MapMarker } from "@/components/MapMarker";
+import ShopMap from "@/components/ShopMap";
 import SearchBox from '@/components/SearchBox';
 import { Wrapper, Status } from "@googlemaps/react-wrapper"
 
@@ -14,9 +13,8 @@ return (
       <main>
       <div className='google_map'>
 
-          {/* <Map /> */}
-          <SearchBox />
-          {/* <MapMarker /> */}
+          <ShopMap />
+          {/* <SearchBox /> */}
         </div>
       </main>
       <Footer />

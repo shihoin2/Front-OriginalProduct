@@ -5,39 +5,56 @@ import {
   LoadScript,
   MarkerF
 } from "@react-google-maps/api";
+import PlaceInfo from "./PlaceInfo";
+import SearchBox from "./SearchBox";
 
-const defaultLatLng={
-  lat:35.658584,
-  lng:139.745433
+const defaultLatLng = {
+  lat: 35.658584,
+  lng: 139.745433
 
   //地図の真ん中に表示させたい場所の緯度、経度を連数配列にします。
   //ここでは東京タワーの座標を使用しています。
 }
 
-const containerStyle={
-  width:"100%",
-  height: "85vh"
+const controlOption = {
+  mapTypeControl: false,
+  fullscreenControl: false
+}
+
+const containerStyle = {
+  width: "80%",
+  height: "30vh"
   //地図の幅と高さを連想配列にします。
   //ちなみにこのライブラリの地図はmapContainerStyleイベントでしか
   //サイズ変更できません(多分)
 };
 const position = {
-  lat:35.658584,
-  lng:139.745433
+  lat: 35.658584,
+  lng: 139.745433
 }
 
 const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY
-export default function Googlemap  () {
-  return (<>
-    <LoadScript googleMapsApiKey={apiKey}>
-      <GoogleMap center={defaultLatLng}
-        zoom={15}
-        //zoomでデフォルトで表示される地図の範囲を指定します。
-        mapContainerStyle={containerStyle}>
+export default function Googlemap() {
+  return (
+    <div class="mx-auto max-w-md ">
+      <div class="flex h-40 max-w-md items-center justify-center">
+      <LoadScript googleMapsApiKey={apiKey}>
+        <GoogleMap
+          center={defaultLatLng}
+          mapContainerStyle={containerStyle}
+          zoom={15}
+          options={controlOption}>
           <MarkerF position={position} />
-      </GoogleMap>
-    </LoadScript>
-  </>)
+          <PlaceInfo />
+        </GoogleMap>
+      </LoadScript>
+      {/* <div class="mx-auto max-w-md"> */}
+          {/* <div class="flex h-40 max-w-md items-center justify-center bg-blue-50"> */}
+            {/* <div class="h-20 w-20 rounded bg-blue-500"></div> */}
+          </div>
+        </div>
+    // </div>
+  )
 }
 
 
