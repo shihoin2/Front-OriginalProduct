@@ -3,7 +3,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Map from "@/components/ShopMap";
 import DisplayImage from "@/components/description/DisplayImage"
-import SearchBox from '@/components/SearchBox';
+import SearchBox from '@/components/GoogleMap';
 import { Wrapper, Status } from "@googlemaps/react-wrapper"
 
 export default function Page() {

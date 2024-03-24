@@ -6,7 +6,7 @@ import {
   MarkerF
 } from "@react-google-maps/api";
 import PlaceInfo from "./PlaceInfo";
-import SearchBox from "./SearchBox";
+import SearchBox from "./Map";
 
 const defaultLatLng = {
   lat: 35.658584,
@@ -34,7 +34,7 @@ const position = {
 }
 
 const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY
-export default function Googlemap() {
+export default function ShopMap() {
   return (
     <div class="mx-auto max-w-md ">
       <div class="flex h-40 max-w-md items-center justify-center">

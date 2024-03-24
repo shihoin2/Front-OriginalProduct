@@ -3,6 +3,7 @@ import LoginLinks from '@/app/LoginLinks';
 import axios from 'axios';
 // import { useState } from 'react';
 import { MapMarker } from '@/components/MapMarker';
+import { Test } from '@/components/Test';
 import {
   GoogleMap,
   LoadScript,
@@ -28,7 +29,7 @@ export default function Page () {
       {/* 通信テスト
       <button onClick={getTest}>Click!!</button>
       <span>　{state}</span> */}
-      <MapMarker />
+      <Test />
     </>
     )
   };

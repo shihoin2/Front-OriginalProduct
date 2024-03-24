@@ -2,7 +2,7 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ShopMap from "@/components/ShopMap";
-import SearchBox from '@/components/SearchBox';
+import SearchBox from '@/components/GoogleMap';
 import { Wrapper, Status } from "@googlemaps/react-wrapper"
 
 export default function Page() {
