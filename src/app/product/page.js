@@ -1,25 +1,20 @@
-"use client"
+'use client'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import Map from "@/components/ShopMap";
-import DisplayImage from "@/components/description/DisplayImage"
-import SearchBox from '@/components/GoogleMap';
-import { Wrapper, Status } from "@googlemaps/react-wrapper"
+import DisplayImage from '@/components/description/DisplayImage'
+import { ProductInfo } from '@/components/description/ProductInfo'
 
 export default function Page() {
-
-return (
-    <>
-      <Header link={'/'} page_title={'Shop'} />
-      <main>
-      <div className='google_map'>
-
-          {/* <Map /> */}
-          <DisplayImage />
-        </div>
-      </main>
-      <Footer />
-    </>
-
-  );
+    return (
+        <>
+            <Header link={'/'} page_title={'Product'} />
+            <main>
+                <div className="product">
+                    <DisplayImage />
+                    <ProductInfo />
+                </div>
+            </main>
+            <Footer />
+        </>
+    )
 }
