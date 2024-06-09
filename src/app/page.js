@@ -4,7 +4,7 @@ import { ShopInfo } from '@/components/shop_info/ShopInfo'
 import axios from 'axios'
 // import { useState } from 'react';
 import { MapMarker } from '@/components/MapMarker'
-import { Test } from '@/components/Test'
+import ShopMap from '@/components/ShopMap'
 import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api'
 import React, { useEffect, useState } from 'react'
 
@@ -23,10 +23,7 @@ export default function Page() {
 
     return (
         <>
-            {/* 通信テスト
-      <button onClick={getTest}>Click!!</button>
-      <span>　{state}</span> */}
-            <ShopInfo />
+            <ShopMap />
         </>
     )
 }
