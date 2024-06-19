@@ -7,20 +7,21 @@ export default function SearchBox() {
     // class App extends Component {
     const [locationName, setLocationName] = useState('')
     const [center, setCenter] = useState({ lat: '', lng: '' })
-    const [isShowMarker, setIsShowMaker] = useState(false)
+    // const [isShowMarker, setIsShowMaker] = useState(false)
     const [currentPosition, setCurrentPosition] = useState()
     const [mapMarker, setMapMaker] = useState([])
 
     const success = data => {
-        const currentPosition = {
+        currentPosition = {
             lat: data.coords.latitude,
             lng: data.coords.longitude,
         }
         setCurrentPosition(currentPosition)
         setCenter(currentPosition)
     }
-    const error = data => {
-        const currentPosition = {
+    // const error = data => {
+    const error = () => {
+        currentPosition = {
             lat: 34.6688,
             lng: 135.1222,
         }
@@ -91,34 +92,35 @@ export default function SearchBox() {
           value={locationName}
           onKeyPress={changeLocationName} /> */}
 
-            <div class="mx-auto max-w-xs">
+            <div className="mx-auto max-w-xs">
                 <div>
-                    <div class="group absolute z-50 mt-2">
+                    <div className="group absolute z-50 mt-2">
                         <input
                             type="text"
                             id="example9"
-                            class="block w-full rounded-md border-gray-300 px-10 shadow-sm transition-all hover:bg-gray-50 focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500"
+                            className="block w-full rounded-md border-gray-300 px-10 shadow-sm transition-all hover:bg-gray-50 focus:border-primary-400 focus:ring focus:ring-primary-200 focus:ring-opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500"
                             placeholder="Quick search..."
                             // className="search_box"
                             onChange={changeLocationName}
                             value={locationName}
                             onKeyPress={changeLocationName}
                         />
-                        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2.5 text-gray-500">
+                        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center px-2.5 text-gray-500">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
-                                class="h-5 w-5">
+                                className="h-5 w-5"
+                            >
                                 <path
-                                    fill-rule="evenodd"
+                                    fillRule="evenodd"
                                     d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                                    clip-rule="evenodd"
+                                    clipRule="evenodd"
                                 />
                             </svg>
                         </div>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5">
-                            <span class="rounded border px-1.5 text-sm text-gray-400 shadow-sm transition-all group-hover:border-primary-500 group-hover:text-primary-500">
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5">
+                            <span className="rounded border px-1.5 text-sm text-gray-400 shadow-sm transition-all group-hover:border-primary-500 group-hover:text-primary-500">
                                 <kbd>⌘</kbd> <kbd>K</kbd>
                             </span>
                         </div>
@@ -127,12 +129,14 @@ export default function SearchBox() {
             </div>
 
             <LoadScript
-                googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY}>
+                googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY}
+            >
                 <GoogleMap
                     mapContainerStyle={containerStyle}
                     center={center}
                     zoom={18}
-                    options={controlOption}>
+                    options={controlOption}
+                >
                     {mapMarker.map(shop => (
                         <MarkerF
                             key={shop.id}

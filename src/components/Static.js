@@ -3,34 +3,40 @@ import { useState, useEffect } from 'react'
 import Button from '@mui/material/Button'
 import { styled } from '@mui/material/styles'
 import axios from 'axios'
+import useCsrfToken from '@/hooks/useCsrfToken'
 
-const Static = () => {
+const Static = ({ onFileSelect }) => {
     const [file, setFile] = useState(null)
     const [message, setMessage] = useState('')
-    const [csrfToken, setCsrfToken] = useState('')
 
-    useEffect(() => {
-        // CSRFトークンを取得
-        const fetchCsrfToken = async () => {
-            const response = await axios.get(
-                'http://localhost/api/csrf-token',
-                {
-                    withCredentials: true,
-                },
-            )
-            setCsrfToken(response.data.csrf_token)
-        }
+    // useEffect(() => {
+    //     // CSRFトークンを取得
+    //     const fetchCsrfToken = async () => {
+    //         const response = await axios.get(
+    //             'http://localhost/api/csrf-token',
+    //             {
+    //                 withCredentials: true,
+    //             },
+    //         )
+    //         setCsrfToken(response.data.csrf_token)
+    //     }
 
-        fetchCsrfToken()
-    }, [])
+    //     fetchCsrfToken()
+    // }, [])
 
-    const handleFileChange = e => {
-        setFile(e.target.files[0])
-    }
+    const csrfToken = useCsrfToken()
+
+    // const handleFileChange = e => {
+    //     setFile(e.target.files[0])
+    // }
 
     const handleUpload = async () => {
         if (!file) {
             setMessage('登録する画像を選んでください')
+            return
+        }
+        if (!csrfToken) {
+            console.error('CSRF token is missing')
             return
         }
 
@@ -45,6 +51,7 @@ const Static = () => {
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data',
+                        'X-CSRF-TOKEN': csrfToken,
                     },
                     withCredentials: true, // クッキーを含める
                 },
@@ -66,7 +73,7 @@ const Static = () => {
     return (
         <div>
             <input type="file" onChange={handleFileChange} />
-            <button onClick={handleUpload}>登録</button>
+            {/* <button onClick={handleUpload}>登録</button> */}
             {/* {message && <p>{message}</p>} */}
         </div>
     )

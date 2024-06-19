@@ -1,10 +1,7 @@
 'use client'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import ShopMap from '@/components/shop_info/ShopMap'
-import { MapMarker } from '@/components/MapMarker'
 import Map from '@/components/Map'
-import { Wrapper, Status } from '@googlemaps/react-wrapper'
 
 export default function Page() {
     return (

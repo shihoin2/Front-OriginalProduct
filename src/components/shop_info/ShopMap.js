@@ -32,14 +32,15 @@ const position = {
 const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY
 export default function ShopMap() {
     return (
-        <div class="mx-auto max-w-md ">
-            <div class="flex h-40 max-w-md items-center justify-center">
+        <div className="mx-auto max-w-md ">
+            <div className="flex h-40 max-w-md items-center justify-center">
                 <LoadScript googleMapsApiKey={apiKey}>
                     <GoogleMap
                         center={defaultLatLng}
                         mapContainerStyle={containerStyle}
                         zoom={15}
-                        options={controlOption}>
+                        options={controlOption}
+                    >
                         <MarkerF position={position} />
                         <PlaceInfo />
                     </GoogleMap>

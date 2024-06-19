@@ -33,7 +33,8 @@ const MarkerWithInfoWindow = ({ position, name, address, tel }) => {
                 <InfoWindow
                     anchor={marker}
                     position={position}
-                    onClose={handleClose}>
+                    onClose={handleClose}
+                >
                     <div>
                         <h1>{name}</h1>
                         <p>{address}</p>

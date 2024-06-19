@@ -11,21 +11,21 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 * {
-  margin: 0;
+    margin: 0;
 }
 
 html,
 body {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }
 
 img,
@@ -33,15 +33,15 @@ picture,
 video,
 canvas,
 svg {
-  display: block;
-  max-width: 100%;
+    display: block;
+    max-width: 100%;
 }
 
 input,
 button,
 textarea,
 select {
-  font: inherit;
+    font: inherit;
 }
 
 p,
@@ -50,108 +50,108 @@ h3,
 h4,
 h5,
 h6 {
-  overflow-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 #root,
 #__next {
-  isolation: isolate;
+    isolation: isolate;
 }
 
 /******************* reset *******************/
 
 /******************* common *******************/
 :root {
-  --root-font-size: 16;
-  --system-text-jp: 'Noto Sans JP', sans-serif;
-  --system-text-en: 'Roboto', sans-serif;
-  --user-text-jp-hand: 'Zen Maru Gothic', serif;
-  --user-text-en-hand: 'Caveat', cursive;
-  --user-text-jp-gothic: 'Noto Sans JP', sans-serif;
-  --user-text-en-gothic: 'Inria Serif', sans-serif;
-  --user-text-jp-serif: 'Noto Serif JP', serif;
-  --user-text-en-serif: 'Lora', serif;
-  --text-color: #766765;
-  --text-color-rgb: 118, 103, 101;
-  --border-color: #71C3E3;
-  /* --border-color: #aad6f9; */
-  /* --main-color: #bff0f6; */
-  --main-color: #2AAEE4;
-  --header-footer-color-rgba: 42, 174, 228, 0.25;
-  --accent-color: #E55305;
-  /* --accent-color: #f5efbf; */
-  --main-bg-color: #fff;
+    --root-font-size: 16;
+    --system-text-jp: 'Noto Sans JP', sans-serif;
+    --system-text-en: 'Roboto', sans-serif;
+    --user-text-jp-hand: 'Zen Maru Gothic', serif;
+    --user-text-en-hand: 'Caveat', cursive;
+    --user-text-jp-gothic: 'Noto Sans JP', sans-serif;
+    --user-text-en-gothic: 'Inria Serif', sans-serif;
+    --user-text-jp-serif: 'Noto Serif JP', serif;
+    --user-text-en-serif: 'Lora', serif;
+    --text-color: #766765;
+    --text-color-rgb: 118, 103, 101;
+    --border-color: #71c3e3;
+    /* --border-color: #aad6f9; */
+    /* --main-color: #bff0f6; */
+    --main-color: #2aaee4;
+    --header-footer-color-rgba: 42, 174, 228, 0.25;
+    --accent-color: #e55305;
+    /* --accent-color: #f5efbf; */
+    --main-bg-color: #fff;
 }
 
 body {
-  margin: 0 auto;
-  font-size: var(--root-font-size);
-  font-family: var(--system-text-en);
-  background-color: var(--main-bg-color);
-  color: var(--text-color);
+    margin: 0 auto;
+    font-size: var(--root-font-size);
+    font-family: var(--system-text-en);
+    background-color: var(--main-bg-color);
+    color: var(--text-color);
 }
 
 main {
-  max-width: 1240px;
-  margin: 0 auto;
-  min-height: 83vh;
+    max-width: 1240px;
+    margin: 0 auto;
+    min-height: 83vh;
 }
 
 main.create {
-  min-height: 83vh;
-  height: 83vh;
+    min-height: 83vh;
+    height: 83vh;
 }
 
 h2 {
-  font-size: calc(24 / var(--root-font-size) * 1rem);
-  /*24px*/
-  /* ksu */
-  background-color: #aad6f9;
+    font-size: calc(24 / var(--root-font-size) * 1rem);
+    /*24px*/
+    /* ksu */
+    background-color: #aad6f9;
 }
 
 h3 {
-  font-size: calc(20 / var(--root-font-size) * 1rem);
-  /*20px*/
+    font-size: calc(20 / var(--root-font-size) * 1rem);
+    /*20px*/
 }
 
 /******************* header *******************/
 header {
-  height: 7vh;
-  background-color: rgba(var(--header-footer-color-rgba));
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 30px;
+    height: 7vh;
+    background-color: rgba(var(--header-footer-color-rgba));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
 }
 
 header div.link_btn {
-  /* width: calc(130 / var(--root-font-size) * 1rem); */
-  width: 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    /* width: calc(130 / var(--root-font-size) * 1rem); */
+    width: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header div.page_title {
-  /* width: calc(130 / var(--root-font-size) * 1rem); 20px */
-  height: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5%;
+    /* width: calc(130 / var(--root-font-size) * 1rem); 20px */
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
 }
 
 /******************* header *******************/
 
 /******************* footer *******************/
 footer {
-  height: 8vh;
-  background-color: rgba(var(--header-footer-color-rgba));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  justify-content: space-around;
+    height: 8vh;
+    background-color: rgba(var(--header-footer-color-rgba));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
 }
 
 /* div.footer_icon {
@@ -161,79 +161,79 @@ footer {
 /******************* footer *******************/
 /******************* card *******************/
 div.card {
-  box-shadow: 0 0 5px gray;
-  margin: 15px
+    box-shadow: 0 0 5px gray;
+    margin: 15px;
 }
 
 div.card_icon {
-  height: 7vh;
-  width: 7vh;
-  margin: 2px;
-  /* background-color: rgba(var(--header-footer-color-rgba)); */
-  justify-content: center;
-  align-items: center;
+    height: 7vh;
+    width: 7vh;
+    margin: 2px;
+    /* background-color: rgba(var(--header-footer-color-rgba)); */
+    justify-content: center;
+    align-items: center;
 }
 
 div.card_title {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 /******************* card *******************/
 
 /******************* top-page *******************/
 div.cards {
-  padding: 20px 10px;
+    padding: 20px 10px;
 }
 /******************* top-page *******************/
 
 /******************* map-page *******************/
 div.google_map {
-  width: 100%;
-  position: relative;
+    width: 100%;
+    position: relative;
 }
 div.map_container {
-  position: relative;
+    position: relative;
     width: 100%;
     height: 100vh;
 }
 div.map {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 /******************* map-page *******************/
 /******************* searchBox *******************/
 input.search_box {
-  /* width: 100%; */
-  position: absolute;
-  /* position: fixed; */
-  z-index: 10;
+    /* width: 100%; */
+    position: absolute;
+    /* position: fixed; */
+    z-index: 10;
 }
 /******************* searchBox *******************/
 /******************* shop *******************/
 div.shop_map {
-  align-self: center;
-  margin: 10px;
+    align-self: center;
+    margin: 10px;
 }
 /******************* shop *******************/
 /******************* shop-list-card *******************/
 div.list_card {
-  position:fixed;
-  /* position: relative; */
-  bottom: 20px;
-  right: 0;
-  left: 0;
-  margin: auto;
-  width: 85%;
-  height: 20%;
-  /* max-height: 400px; */
-  background: white;
-  overflow-y: auto;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  /* 元々のやつ */
-  /* padding: 20px;
+    position: fixed;
+    /* position: relative; */
+    bottom: 20px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 85%;
+    height: 20%;
+    /* max-height: 400px; */
+    background: white;
+    overflow-y: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    /* 元々のやつ */
+    /* padding: 20px;
   margin: 0 auto; */
-  }
+}
 div.list_item {
     overflow-x: auto;
     white-space: nowrap;
@@ -247,23 +247,24 @@ div.list_item p {
     margin: 0 auto;
 }
 
-div.next_arrow, div.prev_arrow {
-  position: absolute;
-  top: 40%;
-  /* transform: translateY(-50%); */
-  /* background: rgba(255, 255, 255, 0.8); */
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 1001;
+div.next_arrow,
+div.prev_arrow {
+    position: absolute;
+    top: 40%;
+    /* transform: translateY(-50%); */
+    /* background: rgba(255, 255, 255, 0.8); */
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1001;
 }
 
 div.next_arrow {
-  right: 0px;
+    right: 0px;
 }
 
 div.prev_arrow {
-  left: 0px;
+    left: 0px;
 }
 
 /******************* shop-list-card *******************/

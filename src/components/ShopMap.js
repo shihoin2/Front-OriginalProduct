@@ -53,7 +53,8 @@ const ShopMap = () => {
             mapId={process.env.NEXT_PUBLIC_GOOGLE_MAP_ID}
             apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY}
             region="JP"
-            language="JP">
+            language="JP"
+        >
             <div className="map_container">
                 <Map
                     className="map"
@@ -63,7 +64,8 @@ const ShopMap = () => {
                     // zoomControl={true}
                     mapId="shopMap"
                     // className="shopMap"
-                    ref={mapRef}>
+                    ref={mapRef}
+                >
                     {markerPositions.map((position, index) => (
                         <MarkerWithInfoWindow
                             key={index}

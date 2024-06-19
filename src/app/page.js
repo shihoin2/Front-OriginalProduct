@@ -1,12 +1,12 @@
 'use client'
-import LoginLinks from '@/app/LoginLinks'
-import { ShopInfo } from '@/components/shop_info/ShopInfo'
-import axios from 'axios'
-// import { useState } from 'react';
-import { MapMarker } from '@/components/MapMarker'
+// import LoginLinks from '@/app/LoginLinks'
+// import { ShopInfo } from '@/components/shop_info/ShopInfo'
+// import axios from 'axios'
+// // import { useState } from 'react';
+// import { MapMarker } from '@/components/MapMarker'
 import ShopMap from '@/components/ShopMap'
-import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api'
-import React, { useEffect, useState } from 'react'
+// import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api'
+import React from 'react'
 
 export default function Page() {
     //   const [state, setState] = useState('')

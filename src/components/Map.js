@@ -24,20 +24,20 @@ export default function Map() {
     }, [])
 
     const success = data => {
-        const currentPosition = {
+        const successPosition = {
             lat: data.coords.latitude,
             lng: data.coords.longitude,
         }
-        setCurrentPosition(currentPosition)
-        setCenter(currentPosition)
+        setCurrentPosition(successPosition)
+        setCenter(successPosition)
     }
-    const error = data => {
-        const currentPosition = {
+    const error = () => {
+        const errorPosition = {
             lat: 34.6688,
             lng: 135.1222,
         }
-        setCurrentPosition(currentPosition)
-        setCenter(currentPosition)
+        setCurrentPosition(errorPosition)
+        setCenter(errorPosition)
     }
 
     useEffect(() => {
@@ -180,11 +180,12 @@ export default function Map() {
                     onKeyPress={changeLocationName}
                 />
                 <button onClick={searchNearbyPlaces}>Search</button>
-                <ul id="placeList"></ul>
+                <ul id="placeList" />
             </div>
             <LoadScript
                 googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY}
-                libraries={['places']}>
+                libraries={['places']}
+            >
                 <GoogleMap
                     id="map"
                     mapContainerStyle={containerStyle}

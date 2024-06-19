@@ -16,7 +16,7 @@
 import Input from './Input'
 
 const StoreProductInfo = () => {
-    return <Input></Input>
+    return <Input />
 }
 
 export default StoreProductInfo
