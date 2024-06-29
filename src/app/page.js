@@ -38,10 +38,8 @@ export default function Page() {
             <main>
                 <div className="google_map">
                     <APIProvider
-                        mapId={process.env.local.NEXT_PUBLIC_GOOGLE_MAP_ID}
-                        apiKey={
-                            process.env.local.NEXT_PUBLIC_GOOGLE_MAP_API_KEY
-                        }
+                        mapId={process.env.NEXT_PUBLIC_GOOGLE_MAP_ID}
+                        apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY}
                         region="JP"
                         language="JP"
                     >
