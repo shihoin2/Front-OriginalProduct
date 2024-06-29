@@ -30,7 +30,8 @@ const ShopMap = () => {
     const getMapData = async () => {
         try {
             const response = await axios.get(
-                'http://localhost/api/mogu_search/shop',
+                // 'http://localhost/api/mogu_search/shop',
+                'http://54.249.109.215/api/mogu_search/shop',
             )
             setMarkerPositions(response.data)
             console.log(response.data)
