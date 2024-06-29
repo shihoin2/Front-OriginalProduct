@@ -36,7 +36,9 @@ const ShopListCard = ({ shops, onSlideChange }) => {
                 {shops.map((shop, index) => (
                     <div key={index} className="list_item">
                         {/* <Card> */}
-                        <p>{shop.name}</p>
+                        <a href={`/map/shop/${shop.id}`}>
+                            <p>{shop.name}</p>
+                        </a>
                         <p>{shop.address}</p>
                         <p>{shop.tel}</p>
                         {/* </Card> */}
