@@ -1,3 +1,5 @@
+// 商品情報の登録(画像以外)
+
 import useCsrfToken from '@/hooks/useCsrfToken'
 import StarRating from './StarRating'
 import React, {
@@ -11,7 +13,7 @@ import { useParams } from 'next/navigation'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
 
-const AddProductForm = () => {
+const ShopIdAddProduct = () => {
     const params = useParams()
     const shopId = params.shopId
     const [file, setFile] = useState(null)
@@ -50,7 +52,7 @@ const AddProductForm = () => {
         })
         try {
             const response = await axios.post(
-                'http://localhost:8000/api/mogu_search/image',
+                `http://localhost:8000/api/mogu_search/image/${shopId}`,
                 formData,
                 {
                     headers: {
@@ -172,4 +174,4 @@ const AddProductForm = () => {
     )
 }
 
-export default AddProductForm
+export default ShopIdAddProduct

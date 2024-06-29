@@ -10,7 +10,7 @@ export default function Page() {
             <Header link={'/'} page_title={'Product'} />
             <main>
                 <div className="product">
-                    <DisplayImage />
+                    {/* <DisplayImage /> */}
                     <ProductInfo />
                 </div>
             </main>
