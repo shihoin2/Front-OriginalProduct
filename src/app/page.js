@@ -5,7 +5,18 @@
 // // import { useState } from 'react';
 // import { MapMarker } from '@/components/MapMarker'
 import ShopMap from '@/components/ShopMap'
-// import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import { Autocomplete } from '@/components/AutoComplete'
+import {
+    APIProvider,
+    ControlPosition,
+    Map,
+    MapControl,
+    useMap,
+    InfoWindow,
+    useMapsLibrary,
+} from '@vis.gl/react-google-maps'
 import React from 'react'
 
 export default function Page() {
@@ -23,7 +34,20 @@ export default function Page() {
 
     return (
         <>
-            <ShopMap />
+            <Header link={'/'} page_title={'Map'} />
+            <main>
+                <div className="google_map">
+                    <APIProvider
+                        mapId={process.env.NEXT_PUBLIC_GOOGLE_MAP_ID}
+                        apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY}
+                        region="JP"
+                        language="JP"
+                    >
+                        <ShopMap />
+                    </APIProvider>
+                </div>
+            </main>
+            <Footer />
         </>
     )
 }
