@@ -5,8 +5,8 @@ export default function Page() {
         <Image
             // src="/MoguLogo.svg"
             src="/MoguSaLogo.png.svg"
-            width={50}
-            height={50}
+            width={30}
+            height={30}
             alt="WEAVE"
             priority
         />
