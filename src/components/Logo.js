@@ -4,7 +4,7 @@ export default function Page() {
     return (
         <Image
             // src="/MoguLogo.svg"
-            src="/MoguSaLogo.png"
+            src="/MoguSaLogo.png.svg"
             width={50}
             height={50}
             alt="WEAVE"
