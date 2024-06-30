@@ -50,7 +50,7 @@ const AddProductForm = () => {
         })
         try {
             const response = await axios.post(
-                'http://localhost:8000/api/mogu_search/image',
+                'https://osyokuzi.site/api/mogu_search/image',
                 formData,
                 {
                     headers: {
