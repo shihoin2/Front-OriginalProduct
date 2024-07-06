@@ -1,6 +1,7 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Card from '@/components/Card'
+import { IconContext } from 'react-icons'
 import { FiMapPin } from 'react-icons/fi'
 import { GrMapLocation } from 'react-icons/gr'
 import { BiCategory } from 'react-icons/bi'

@@ -1,6 +1,6 @@
 'use client'
 
-import Button from '@/components/Button'
+import Button from '@/components/common/Button'
 import { useAuth } from '@/hooks/auth'
 import { useState } from 'react'
 
