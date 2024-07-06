@@ -13,11 +13,10 @@ export default function Page() {
         <>
             <Header link={'/'} page_title={'SHOP MAP'} />
             <main>
-                <div className="shop_map">
-                    <ShopMap />
-                    {/* <ShopInfo shopId={params.shopId} /> */}
-                    <ShopInfo />
-                </div>
+                {/* <div className="justify-around "> */}
+                {/* <ShopInfo shopId={params.shopId} /> */}
+                <ShopInfo />
+                {/* </div> */}
             </main>
             <Footer />
         </>
