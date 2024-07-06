@@ -102,141 +102,87 @@ export function ShopInfo() {
                 </div>
             </div>
 
-            {/* <h1>店舗名</h1>
-            <p>{shopInfo.name}</p>
-            <button>お気に入り店舗に追加する</button>
-            <h1>住所</h1>
-            <p>{shopInfo.address}</p>
-            <h1>電話番号</h1>
-            <p>{shopInfo.tel}</p> */}
             <div className="mt-4">
                 <h1>販売商品</h1>
-                <div className="">
-                    <ul className="flex flex-wrap items-center justify-center w-full">
-                        <li>
-                            <a
-                                href="#"
-                                className="me-4 hover:underline md:me-6 "
-                            >
-                                商品
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="me-4 hover:underline md:me-6"
-                            >
-                                メーカー
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="me-4 hover:underline md:me-6 "
-                            >
-                                学会分類2021
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="me-4 hover:underline md:me-6"
-                            >
-                                嚥下食ピラミッド
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="me-4 hover:underline md:me-6"
-                            >
-                                UDF(ユニバーサルデザインフード)
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="me-4 hover:underline md:me-6"
-                            >
-                                スマイルケア食
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="me-4 hover:underline md:me-6"
-                            >
-                                レビュー
-                            </a>
-                        </li>
-                    </ul>
-
-                    {shopInfo.products &&
-                        shopInfo.products.map(product => (
-                            // <div key={product.id}>
-                            <>
-                                <ul className="flex flex-wrap grid-cols-7 items-center justify-center text-gray-900 dark:text-white w-full">
-                                    <li
+                <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" className="px-6 py-3">
+                                    商品
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    メーカー
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    学会分類2021
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    嚥下食ピラミッド
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    UDF(ユニバーサルデザインフード)
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    スマイルケア食
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    レビュー
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {shopInfo.products &&
+                                shopInfo.products.map(product => (
+                                    <tr
                                         key={product.id}
-                                        className="flex flex-auto me-4 hover:underline md:me-6"
+                                        className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                                     >
-                                        {/* <div className="flex-row"> */}
-                                        <a href={`/product/${product.id}`}>
-                                            <img
-                                                className="w-8 h-8 "
-                                                src={product.image_path}
-                                                alt={product.name}
-                                            />
-                                            <p>{product.name}</p>
-                                        </a>
-                                        {/* </div> */}
-                                    </li>
-                                    <li className="flex-1 me-4 hover:underline md:me-6">
-                                        <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+                                        <td className="px-6 py-4">
+                                            <a
+                                                href={`/product/${product.id}`}
+                                                className="flex items-center"
+                                            >
+                                                <img
+                                                    className="w-8 h-8 mr-2"
+                                                    src={product.image_path}
+                                                    alt={product.name}
+                                                />
+                                                <p>{product.name}</p>
+                                            </a>
+                                        </td>
+                                        <td className="px-6 py-4">
                                             {product.manufacturer}
-                                        </p>
-                                    </li>
-
-                                    <li className="flex-1 me-4 hover:underline md:me-6">
-                                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                                        </td>
+                                        <td className="px-6 py-4">
                                             {product.JDD2021_code}
-                                        </p>
-                                    </li>
-
-                                    <li className="flex-1 me-4 hover:underline md:me-6">
-                                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                                        </td>
+                                        <td className="px-6 py-4">
                                             {product.FFPWD_code}
-                                        </p>
-                                    </li>
-                                    <li className="flex-1 me-4 hover:underline md:me-6">
-                                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                                        </td>
+                                        <td className="px-6 py-4">
                                             {product.UDF_code}
-                                        </p>
-                                    </li>
-                                    <li className="flex-1 me-4 hover:underline md:me-6">
-                                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                                        </td>
+                                        <td className="px-6 py-4">
                                             {product.SCF_code}
-                                        </p>
-                                    </li>
-                                    <li className="flex-1 me-4 hover:underline md:me-6">
-                                        <Button
-                                            // variant="contained"
-                                            // color="primary"
-                                            onClick={() =>
-                                                handleOpen(product.reviews)
-                                            }
-                                            className=""
-                                        >
-                                            レビューを見る
-                                        </Button>
-                                    </li>
-                                </ul>
-                            </>
-                            // </div>
-                        ))}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            <Button
+                                                onClick={() =>
+                                                    handleOpen(product.reviews)
+                                                }
+                                                className=""
+                                            >
+                                                レビューを見る
+                                            </Button>
+                                        </td>
+                                    </tr>
+                                ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            {/* レビューモーダル */}
+
             <Modal open={open} onClose={handleClose}>
                 <Box
                     sx={{
@@ -263,9 +209,8 @@ export function ShopInfo() {
                         selectedProductReviews.map(review => (
                             <div
                                 key={review.id}
-                                className=" items-center text-base font-semibold text-gray-900 dark:text-white"
+                                className="items-center text-base font-semibold text-gray-900 dark:text-white"
                             >
-                                {/* <TotalStar value={review.rating} readOnly /> */}
                                 <TotalStar rating={review.rating} />
                                 <Typography variant="body2">
                                     {review.description}
