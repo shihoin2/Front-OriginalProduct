@@ -1,6 +1,6 @@
 'use client'
 // import ShopMap from '@/components/ShopMap'
-// import Top from '@/components/TopPage/Top'
+import Login from '@/components/loginPage/Login'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Autocomplete } from '@/components/AutoComplete'
@@ -18,9 +18,12 @@ import React from 'react'
 export default function Page() {
     return (
         <>
-            <Header link={'/'} page_title={''} />
-            <main></main>
-            <Footer />
+            {/* <Header link={'/'} page_title={''} /> */}
+            <main>
+                {/* <ShopMap /> */}
+                <Login />
+            </main>
+            {/* <Footer /> */}
         </>
     )
 }
