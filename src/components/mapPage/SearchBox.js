@@ -4,7 +4,7 @@ import { useMap, useMapsLibrary } from '@vis.gl/react-google-maps'
 
 // This is a custom built autocomplete component using the "Autocomplete Service" for predictions
 // and the "Places Service" for place details
-export const SearchBox = ({ onPlaceSelect }) => {
+const SearchBox = ({ onPlaceSelect }) => {
     const map = useMap()
     const places = useMapsLibrary('places')
     const [sessionToken, setSessionToken] = useState()
@@ -55,10 +55,12 @@ export const SearchBox = ({ onPlaceSelect }) => {
             if (!places) return
 
             const detailRequestOptions = {
-                placeId,
+                // placeId,
+                placeId: placeId,
                 fields: ['geometry', 'name', 'formatted_address'],
                 sessionToken,
             }
+            console.log(detailRequestOptions)
 
             const detailsRequestCallback = placeDetails => {
                 onPlaceSelect(placeDetails)
@@ -89,11 +91,14 @@ export const SearchBox = ({ onPlaceSelect }) => {
             {predictionResults.length > 0 && (
                 <ul className="autocomplete-list">
                     {predictionResults.map(({ place_id, description }) => {
+                        // {predictionResults.map(({ place_id, description }) => {
                         return (
                             <li
                                 key={place_id}
+                                // key={placeId}
                                 className="autocomplete-list-item"
                                 onClick={() => handleSuggestionClick(place_id)}
+                                // onClick={() => handleSuggestionClick(placeID)}
                             >
                                 {description}
                             </li>
@@ -104,3 +109,5 @@ export const SearchBox = ({ onPlaceSelect }) => {
         </div>
     )
 }
+
+export default SearchBox

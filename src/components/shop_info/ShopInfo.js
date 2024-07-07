@@ -20,6 +20,8 @@ import Link from 'next/link'
 import ShopMap from '@/components/shop_info/ShopMap'
 import Button from '@/components/common/Button'
 import TotalStar from '@/components/description/TotalStar'
+import AvStar from '@/components/description/AvStar'
+// import ReviewDescription from '../description/ReviewDescription'
 
 export function ShopInfo() {
     const [shopInfo, setShopInfo] = useState([])
@@ -102,141 +104,141 @@ export function ShopInfo() {
                 </div>
             </div>
 
-            {/* <h1>店舗名</h1>
-            <p>{shopInfo.name}</p>
-            <button>お気に入り店舗に追加する</button>
-            <h1>住所</h1>
-            <p>{shopInfo.address}</p>
-            <h1>電話番号</h1>
-            <p>{shopInfo.tel}</p> */}
             <div className="mt-4">
-                <h1>販売商品</h1>
-                <div className="">
-                    <ul className="flex flex-wrap items-center justify-center w-full">
-                        <li>
-                            <a
-                                href="#"
-                                className="me-4 hover:underline md:me-6 "
-                            >
-                                商品
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="me-4 hover:underline md:me-6"
-                            >
-                                メーカー
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="me-4 hover:underline md:me-6 "
-                            >
-                                学会分類2021
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="me-4 hover:underline md:me-6"
-                            >
-                                嚥下食ピラミッド
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="me-4 hover:underline md:me-6"
-                            >
-                                UDF(ユニバーサルデザインフード)
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="me-4 hover:underline md:me-6"
-                            >
-                                スマイルケア食
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="#"
-                                className="me-4 hover:underline md:me-6"
-                            >
-                                レビュー
-                            </a>
-                        </li>
-                    </ul>
+                <div className="space-x-3 flex fle-row place-items-center mb-1">
+                    <h1>販売商品</h1>
+                    {/* 商品追加ボタン */}
+                    <Link href={`/map/shop/add_product/${shopId}`}>
+                        <Button
+                            type={'button'}
+                            buttonName={'この店に商品を追加'}
+                            className={''}
+                        />
+                    </Link>
+                </div>
+                {/* </Fab> */}
+                <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <colgroup>
+                            <col />
+                        </colgroup>
+                        <colgroup span={2} />
+                        <colgroup span={4} />
+                        <colgroup span={1} />
+                        <thead className="text-xs text-gray-700 text-center uppercase bg-gray-50 ">
+                            <tr>
+                                <th
+                                    rowSpan={2}
+                                    scope="col"
+                                    className="px-6 py-3"
+                                >
+                                    商品
+                                </th>
+                                <th
+                                    rowSpan={2}
+                                    scope="col"
+                                    className="px-6 py-3"
+                                >
+                                    メーカー
+                                </th>
+                                <th
+                                    colSpan={4}
+                                    scope="col"
+                                    className="px-6 py-3 "
+                                >
+                                    嚥下グレード
+                                </th>
+                                <th
+                                    rowSpan={2}
+                                    scope="col"
+                                    className="px-6 py-3"
+                                >
+                                    レビュー
+                                </th>
+                            </tr>
 
-                    {shopInfo.products &&
-                        shopInfo.products.map(product => (
-                            // <div key={product.id}>
-                            <>
-                                <ul className="flex flex-wrap grid-cols-7 items-center justify-center text-gray-900 dark:text-white w-full">
-                                    <li
-                                        key={product.id}
-                                        className="flex flex-auto me-4 hover:underline md:me-6"
-                                    >
-                                        {/* <div className="flex-row"> */}
-                                        <a href={`/product/${product.id}`}>
-                                            <img
-                                                className="w-8 h-8 "
-                                                src={product.image_path}
-                                                alt={product.name}
-                                            />
-                                            <p>{product.name}</p>
-                                        </a>
-                                        {/* </div> */}
-                                    </li>
-                                    <li className="flex-1 me-4 hover:underline md:me-6">
-                                        <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-                                            {product.manufacturer}
-                                        </p>
-                                    </li>
-
-                                    <li className="flex-1 me-4 hover:underline md:me-6">
-                                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                                            {product.JDD2021_code}
-                                        </p>
-                                    </li>
-
-                                    <li className="flex-1 me-4 hover:underline md:me-6">
-                                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                                            {product.FFPWD_code}
-                                        </p>
-                                    </li>
-                                    <li className="flex-1 me-4 hover:underline md:me-6">
-                                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                                            {product.UDF_code}
-                                        </p>
-                                    </li>
-                                    <li className="flex-1 me-4 hover:underline md:me-6">
-                                        <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                                            {product.SCF_code}
-                                        </p>
-                                    </li>
-                                    <li className="flex-1 me-4 hover:underline md:me-6">
-                                        <Button
-                                            // variant="contained"
-                                            // color="primary"
-                                            onClick={() =>
-                                                handleOpen(product.reviews)
-                                            }
-                                            className=""
+                            <tr>
+                                <th scope="col" className="px-6 py-3">
+                                    学会分類2021
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    嚥下食ピラミッド
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    UDF(ユニバーサルデザインフード)
+                                </th>
+                                <th scope="col" className="px-6 py-3">
+                                    スマイルケア食
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {shopInfo.products &&
+                                shopInfo.products.map(product => {
+                                    const totalReviews = product.reviews.length
+                                    const averageRating = totalReviews
+                                        ? (
+                                              product.reviews.reduce(
+                                                  (sum, review) =>
+                                                      sum + review.rating,
+                                                  0,
+                                              ) / totalReviews
+                                          ).toFixed(1)
+                                        : 0
+                                    return (
+                                        <tr
+                                            key={product.id}
+                                            className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                                         >
-                                            レビューを見る
-                                        </Button>
-                                    </li>
-                                </ul>
-                            </>
-                            // </div>
-                        ))}
+                                            <td className="px-6 py-4">
+                                                <a
+                                                    href={`/product/${product.id}`}
+                                                    className="flex items-center"
+                                                >
+                                                    <img
+                                                        className="w-8 h-8 mr-2"
+                                                        src={product.image_path}
+                                                        alt={product.name}
+                                                    />
+                                                    <p>{product.name}</p>
+                                                </a>
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                {product.manufacturer}
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                {product.JDD2021_code}
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                {product.FFPWD_code}
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                {product.UDF_code}
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                {product.SCF_code}
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                <AvStar
+                                                    averageRating={
+                                                        averageRating
+                                                    }
+                                                    totalReviews={totalReviews}
+                                                    onClick={() =>
+                                                        handleOpen(
+                                                            product.reviews,
+                                                        )
+                                                    }
+                                                />
+                                            </td>
+                                        </tr>
+                                    )
+                                })}
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            {/* レビューモーダル */}
+
             <Modal open={open} onClose={handleClose}>
                 <Box
                     sx={{
@@ -244,9 +246,11 @@ export function ShopInfo() {
                         top: '50%',
                         left: '50%',
                         transform: 'translate(-50%, -50%)',
-                        width: 400,
+                        width: 500,
+                        maxWidth: 500,
+                        maxHeight: '80vh',
+                        overflowY: 'auto',
                         bgcolor: 'background.paper',
-                        border: '2px solid #000',
                         boxShadow: 24,
                         p: 4,
                     }}
@@ -258,25 +262,42 @@ export function ShopInfo() {
                     >
                         商品レビュー
                     </Typography>
-                    {selectedProductReviews &&
-                    selectedProductReviews.length > 0 ? (
-                        selectedProductReviews.map(review => (
-                            <div
-                                key={review.id}
-                                className=" items-center text-base font-semibold text-gray-900 dark:text-white"
-                            >
-                                {/* <TotalStar value={review.rating} readOnly /> */}
-                                <TotalStar rating={review.rating} />
-                                <Typography variant="body2">
-                                    {review.description}
-                                </Typography>
-                            </div>
-                        ))
-                    ) : (
-                        <Typography variant="body2">
-                            レビューがありません。
-                        </Typography>
-                    )}
+                    <div className="">
+                        {selectedProductReviews &&
+                        selectedProductReviews.length > 0 ? (
+                            selectedProductReviews.map(review => (
+                                <div
+                                    key={review.id}
+                                    className="  items-center text-base font-semibold text-gray-900 dark:text-white"
+                                >
+                                    {/* <TotalStar rating={review.rating} /> */}
+                                    <Typography variant="body2">
+                                        <div className="flex items-center mb-1">
+                                            <div className="font-medium dark:text-white">
+                                                <p>{review.user.name}</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center mb-1 space-x-1 rtl:space-x-reverse">
+                                            <TotalStar rating={review.rating} />
+                                            <p className="block text-sm text-gray-500 dark:text-gray-400">
+                                                {review.updated_at}
+                                            </p>
+                                        </div>
+                                        <p className="mb-2 text-gray-500 dark:text-gray-400">
+                                            {review.description}
+                                        </p>
+
+                                        {/* {review.description} */}
+                                        {/* <ReviewDescription review={review} /> */}
+                                    </Typography>
+                                </div>
+                            ))
+                        ) : (
+                            <Typography variant="body2">
+                                レビューがありません。
+                            </Typography>
+                        )}
+                    </div>
                 </Box>
             </Modal>
 
@@ -291,32 +312,6 @@ export function ShopInfo() {
                     </div>
                 ))} */}
 
-            {/* 商品追加ボタン */}
-            <Box
-                sx={{
-                    position: 'fixed',
-                    bottom: '80px',
-                    right: '16px',
-                    zIndex: 5,
-                }}
-            >
-                <Tooltip title="商品追加">
-                    {/* <Fab
-                        style={{
-                            background: 'black',
-                        }}
-                    > */}
-                    <Link href={`/map/shop/add_product/${shopId}`}>
-                        <AddCircleRoundedIcon
-                            color="black"
-                            background="white"
-                            fontSize="large"
-                        ></AddCircleRoundedIcon>
-                    </Link>
-
-                    {/* </Fab> */}
-                </Tooltip>
-            </Box>
             {/* レビュー追加ボタン */}
         </>
     )
