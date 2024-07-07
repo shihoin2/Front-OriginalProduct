@@ -14,7 +14,7 @@ export function MapMarker() {
     const getMapData = async () => {
         try {
             const response = await axios.get(
-                'http://localhost/api/mogu_search/shop',
+                'https://osyokuzi.site/api/mogu_search/shop',
             )
             setMapMaker(response.data)
             console.log(response.data)

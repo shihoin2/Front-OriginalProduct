@@ -64,7 +64,9 @@ const ShopMap = () => {
     const getMapData = async () => {
         try {
             const response = await axios.get(
-                'http://localhost:8000/api/mogu_search/shop',
+                // 'http://localhost:8000/api/mogu_search/shop',
+                // 'https://osyokuzi.site:8000/api/mogu_search/shop',
+                'https://osyokuzi.site/api/mogu_search/shop',
             )
             setMarkerPositions(response.data)
             // console.log(response.data)
