@@ -6,10 +6,10 @@ const TotalStar = ({ rating }) => {
 
     // ratingの数だけ赤色の星を追加
     for (let i = 0; i < rating; i++) {
-        stars.push(<FaStar key={i} color="#E55305" />)
+        stars.push(<FaStar key={`filled-${i}`} color="#E55305" />)
     }
     for (let i = rating; i < 5; i++) {
-        stars.push(<FaStar key={i + 5} color="grey" />)
+        stars.push(<FaStar key={`empty-${i}`} color="grey" />)
     }
 
     return <div style={{ display: 'flex' }}>{stars}</div>

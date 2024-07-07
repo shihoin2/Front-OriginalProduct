@@ -9,13 +9,13 @@ export default function Page() {
         <>
             <Header link={'/'} page_title={'商品追加'} />
             <main>
-                <div className="add_product">
+                {/* <div className="add_product"> */}
                     <h1>商品登録</h1>
                     {/* <Static onFileSelect={handleFileSelect} /> */}
                     <ShopIdAddProduct />
                     {/* <button onClick={handleFormSubmit}>登録</button> */}
                     {/* <StoreProductInfo /> */}
-                </div>
+                {/* </div> */}
             </main>
             <Footer />
         </>

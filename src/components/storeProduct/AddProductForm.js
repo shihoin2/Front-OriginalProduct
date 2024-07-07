@@ -10,6 +10,8 @@ import React, {
 import { useParams } from 'next/navigation'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
+import { IoCloudUploadOutline } from 'react-icons/io5'
+import Button from '../common/Button'
 
 const AddProductForm = () => {
     const params = useParams()
@@ -50,7 +52,7 @@ const AddProductForm = () => {
         })
         try {
             const response = await axios.post(
-                'http://localhost:8000/api/mogu_search/image',
+                'http://localhost/api/mogu_search/image',
                 formData,
                 {
                     headers: {
@@ -72,102 +74,205 @@ const AddProductForm = () => {
 
     return (
         <>
-            <div className="AddImageForm">
-                <input type="file" onChange={handleFileChange} />
-                {/* <button onClick={handleUpload}>登録</button> */}
-                {/* {message && <p>{message}</p>} */}
-            </div>
-            <div className="AddProductForm">
-                <form onSubmit={handleSubmit(onSubmit)}>
-                    <div>
-                        <label htmlFor="product-name">商品名</label>
+            <div className="flex sm:flex-row space-x-4 mx-4 w-full">
+                <div className="flex items-center justify-left w-1/2">
+                    <label
+                        htmlFor="dropzone-file"
+                        className="flex flex-col items-center justify-center w-full h-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100 "
+                    >
+                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                            <IoCloudUploadOutline color="gray" size={50} />
+
+                            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                                <span className="font-semibold">
+                                    Click to upload
+                                </span>{' '}
+                                or drag and drop
+                            </p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">
+                                SVG, PNG, JPG or GIF (MAX. 800x400px)
+                            </p>
+                        </div>
                         <input
-                            id="product-name"
-                            {...register('product-name')}
-                            placeholder="商品名を入力してください"
+                            id="dropzone-file"
+                            type="file"
+                            onChange={handleFileChange}
+                            className="hidden"
                         />
-                    </div>
-                    <div>
-                        <label htmlFor="product-manufacturer">メーカー</label>
-                        <input
-                            id="product-manufacturer"
-                            {...register('product-manufacturer')}
-                            placeholder="メーカー名を入力してください"
-                        />
-                    </div>
-                    <div>
-                        <p>嚥下分類コード</p>
-                        <p>
-                            <label htmlFor="JDD2021-code">JDD2021</label>
-                            <select
-                                id="JDD2021-code"
-                                {...register('JDD2021-code')}
-                                defaultValue=""
-                            >
-                                <option value="" disabled>
-                                    選択してください
-                                </option>
-                                <option value="0j">0j</option>
-                                <option value="0t">0t</option>
-                                <option value="1j">1j</option>
-                                <option value="2-1">2-1</option>
-                                <option value="2-2">2-2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
+                    </label>
+                </div>
+
+                <div className="w-1/2 flex justify-items-end">
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <table className=" text-sm text-left rtl:text-right">
+                            <tbody>
+                                <tr className="border-b border-gray-200 dark:border-gray-700">
+                                    <th
+                                        scope="row"
+                                        className="px-6 py-4 font-medium whitespace-nowrap bg-[#F7F7F7]"
+                                    >
+                                        <label htmlFor="product-name">
+                                            商品名
+                                        </label>
+                                    </th>
+                                    <td className="px-6 py-4">
+                                        <input
+                                            id="product-name"
+                                            {...register('product-name')}
+                                            placeholder="商品名を入力してください"
+                                        />
+                                    </td>
+                                </tr>
+                                <tr className="border-b border-gray-200 dark:border-gray-700">
+                                    <th
+                                        scope="row"
+                                        className="px-6 py-4 font-medium whitespace-nowrap bg-[#F7F7F7]"
+                                    >
+                                        <label htmlFor="product-manufacturer">
+                                            メーカー
+                                        </label>
+                                    </th>
+                                    <td className="px-6 py-4">
+                                        <input
+                                            id="product-manufacturer"
+                                            {...register(
+                                                'product-manufacturer',
+                                            )}
+                                            placeholder="メーカー名を入力してください"
+                                        />
+                                    </td>
+                                </tr>
+                                <tr className="border-b border-gray-200 dark:border-gray-700">
+                                    <th
+                                        scope="row"
+                                        className="px-6 py-4 font-medium whitespace-nowrap bg-[#F7F7F7]"
+                                    >
+                                        <label htmlFor="JDD2021-code">
+                                            JDD2021
+                                        </label>
+                                    </th>
+                                    <td className="px-6 py-4">
+                                        <select
+                                            id="JDD2021-code"
+                                            {...register('JDD2021-code')}
+                                            defaultValue=""
+                                        >
+                                            <option value="" disabled>
+                                                選択してください
+                                            </option>
+                                            <option value="0j">0j</option>
+                                            <option value="0t">0t</option>
+                                            <option value="1j">1j</option>
+                                            <option value="2-1">2-1</option>
+                                            <option value="2-2">2-2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr className="border-b border-gray-200 dark:border-gray-700">
+                                    <th
+                                        scope="row"
+                                        className="px-6 py-4 font-medium whitespace-nowrap bg-[#F7F7F7]"
+                                    >
+                                        <label htmlFor="FFPWD-code">
+                                            FFPWD
+                                        </label>
+                                    </th>
+                                    <td className="px-6 py-4">
+                                        {' '}
+                                        <select
+                                            id="FFPWD-code"
+                                            {...register('FFPWD-code')}
+                                            defaultValue=""
+                                        >
+                                            <option value="" disabled>
+                                                選択してください
+                                            </option>
+                                            <option value="FFPWD-1">
+                                                許可基準Ⅰ
+                                            </option>
+                                            <option value="FFPWD-2">
+                                                許可基準Ⅱ
+                                            </option>
+                                            <option value="FFPWD-3">
+                                                許可基準Ⅲ
+                                            </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr className="border-b border-gray-200 dark:border-gray-700">
+                                    <th
+                                        scope="row"
+                                        className="px-6 py-4 font-medium whitespace-nowrap bg-[#F7F7F7]"
+                                    >
+                                        <label htmlFor="UDF-code">UDF</label>
+                                    </th>
+                                    <td className="px-6 py-4">
+                                        {' '}
+                                        <select
+                                            id="UDF-code"
+                                            {...register('UDF-code')}
+                                            defaultValue=""
+                                        >
+                                            <option value="" disabled>
+                                                選択してください
+                                            </option>
+                                            <option value="UDF-1">
+                                                かまなくてよい
+                                            </option>
+                                            <option value="UDF-2">
+                                                舌でつぶせる
+                                            </option>
+                                            <option value="UDF-3">
+                                                歯ぐきでつぶせる
+                                            </option>
+                                            <option value="UDF-4">
+                                                容易にかめる
+                                            </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr className="border-b border-gray-200 dark:border-gray-700">
+                                    <th
+                                        scope="row"
+                                        className="px-6 py-4 font-medium whitespace-nowrap bg-[#F7F7F7]"
+                                    >
+                                        <label htmlFor="SCF-code">
+                                            スマイルケア食
+                                        </label>
+                                    </th>
+                                    <td className="px-6 py-4">
+                                        {' '}
+                                        <select
+                                            id="SCF-code"
+                                            {...register('SCF-code')}
+                                            defaultValue=""
+                                        >
+                                            <option value="" disabled>
+                                                選択してください
+                                            </option>
+                                            <option value="SCF-0">0</option>
+                                            <option value="SCF-1">1</option>
+                                            <option value="SCF-2">2</option>
+                                            <option value="SCF-3">3</option>
+                                            <option value="SCF-4">4</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p className="flex justify-end">
+                            <Button
+                                type={'submit'}
+                                buttonName={'登録'}
+                                className={'mt-2'}
+                                onSubmit={onSubmit}
+                            />
                         </p>
-                        <p>
-                            <label htmlFor="FFPWD-code">FFPWD</label>
-                            <select
-                                id="FFPWD-code"
-                                {...register('FFPWD-code')}
-                                defaultValue=""
-                            >
-                                <option value="" disabled>
-                                    選択してください
-                                </option>
-                                <option value="FFPWD-1">許可基準Ⅰ</option>
-                                <option value="FFPWD-2">許可基準Ⅱ</option>
-                                <option value="FFPWD-3">許可基準Ⅲ</option>
-                            </select>
-                        </p>
-                        <p>
-                            <label htmlFor="UDF-code">UDF</label>
-                            <select
-                                id="UDF-code"
-                                {...register('UDF-code')}
-                                defaultValue=""
-                            >
-                                <option value="" disabled>
-                                    選択してください
-                                </option>
-                                <option value="UDF-1">かまなくてよい</option>
-                                <option value="UDF-2">舌でつぶせる</option>
-                                <option value="UDF-3">歯ぐきでつぶせる</option>
-                                <option value="UDF-4">容易にかめる</option>
-                            </select>
-                        </p>
-                        <p>
-                            <label htmlFor="SCF-code">スマイルケア食</label>
-                            <select
-                                id="SCF-code"
-                                {...register('SCF-code')}
-                                defaultValue=""
-                            >
-                                <option value="" disabled>
-                                    選択してください
-                                </option>
-                                <option value="SCF-0">0</option>
-                                <option value="SCF-1">1</option>
-                                <option value="SCF-2">2</option>
-                                <option value="SCF-3">3</option>
-                                <option value="SCF-4">4</option>
-                            </select>
-                        </p>
-                    </div>
-                    <button type="submit">登録</button>
-                </form>
-            </div>
+                    </form>
+                </div>
+            </div>{' '}
         </>
     )
 }

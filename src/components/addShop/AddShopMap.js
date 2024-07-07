@@ -15,7 +15,7 @@ import ShopListCard from '@/components/ShopListCard'
 // import { Autocomplete } from '@/components/AutoComplete'
 import SideBar from '@/components/mapPage/SideBar'
 
-const NewMap = () => {
+const AddShopMap = () => {
     // 登録している店舗情報の一覧
     const [markerPositions, setMarkerPositions] = useState([])
     const [selectedShopId, setSelectedShopId] = useState(null)
@@ -176,4 +176,4 @@ const NewMap = () => {
         </>
     )
 }
-export default NewMap
+export default AddShopMap

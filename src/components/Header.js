@@ -24,32 +24,32 @@ export default function Page({ link, page_title }) {
                     // className={'link_btn'}
                 >
                     <div className="basis-1/2 flex-col">
-                        <Link href={link}>
+                        <Link href={`#`}>
                             <div>
                                 <IconContext.Provider
                                     value={{
                                         className:
-                                            'text-3xl text-[#FFCA84] ml-2.5',
+                                            'text-3xl text-[#FFCA84] ml-7',
                                     }}
                                 >
                                     <MdOutlineAddBusiness />
                                     {/* <FaUser /> */}
                                 </IconContext.Provider>
                             </div>
-                            <div className="text-xs">店舗登録</div>
+                            <div className="text-xs">店舗マスタ登録</div>
                         </Link>
                     </div>
                     <div className="basis-1/2 ">
-                        <Link href={link}>
+                        <Link href={`/map/shop/add_product`}>
                             <IconContext.Provider
                                 value={{
-                                    className: 'text-3xl text-[#FFCA84] ml-2.5',
+                                    className: 'text-3xl text-[#FFCA84] ml-7',
                                 }}
                             >
                                 <RiFunctionAddLine />
                                 {/* <FaBell /> */}
                             </IconContext.Provider>
-                            <div className="text-xs">商品登録</div>
+                            <div className="text-xs">商品マスタ登録</div>
                         </Link>
                     </div>
                 </div>

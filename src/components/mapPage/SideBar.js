@@ -1,8 +1,9 @@
 'use client'
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import { IoIosArrowForward } from 'react-icons/io'
-import { SearchBox } from '@/components/mapPage/SearchBox'
+import SearchBox from '@/components/mapPage/SearchBox'
 import Button from '@/components/common/Button'
+import AddShop from '../addShop/AddShop'
 
 const SideBar = ({ shops, handlePlaceSelect, clickCurrentLocation }) => {
     return (
