@@ -27,15 +27,21 @@ const NewMap = () => {
     const map = useMap()
 
     useEffect(() => {
-        getUserLocation()
         getMapData()
+        getUserLocation()
     }, [])
 
     useEffect(() => {
-        if (userLocation) {
-            filterPositions(userLocation)
+        if (!userLocation) {
+            setFilteredPositions(markerPositions)
         }
-    }, [userLocation, markerPositions])
+    }, [markerPositions])
+
+    // useEffect(() => {
+    //     if (userLocation) {
+    //         filterPositions(userLocation)
+    //     }
+    // }, [userLocation, markerPositions])
 
     const getUserLocation = () => {
         if (navigator.geolocation) {
@@ -49,7 +55,9 @@ const NewMap = () => {
                     setUserLocation(location)
                     if (map) {
                         map.panTo(location)
+                        map.setZoom(15)
                     }
+                    filterPositions(location)
                 },
                 error => {
                     console.error('Error obtaining user location', error)
@@ -66,6 +74,7 @@ const NewMap = () => {
                 'http://localhost/api/mogu_search/shop',
             )
             setMarkerPositions(response.data)
+            setFilterPosition(response.data)
             // console.log(response.data)
         } catch (err) {
             console.log(err)
@@ -115,6 +124,7 @@ const NewMap = () => {
                 const { location } = place.geometry
                 const newCenter = { lat: location.lat(), lng: location.lng() }
                 map.panTo(newCenter)
+                map.setZoom(15)
                 filterPositions(newCenter)
                 // setInputValue('')
                 // mapRef.current.panTo({ lat: location.lat(), lng: location.lng() })
@@ -141,7 +151,8 @@ const NewMap = () => {
                         <Map
                             // className="map"
                             disableDefaultUI={true}
-                            defaultZoom={15}
+                            // defaultZoom={15}
+                            defaultZoom={8}
                             defaultCenter={{
                                 lat: 34.6601133,
                                 lng: 135.1335401,
@@ -155,8 +166,8 @@ const NewMap = () => {
                             // className="shopMap"
                             // ref={mapRef}
                         >
-                            {/* {markerPositions.map((position, index) => ( */}
-                            {filteredPositions.map((position, index) => (
+                            {markerPositions.map((position, index) => (
+                                // {filteredPositions.map((position, index) => (
                                 <MarkerWithInfoWindow
                                     key={index}
                                     // position={markerWithInfoWindowPosition} />

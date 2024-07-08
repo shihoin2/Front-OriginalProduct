@@ -159,7 +159,7 @@ header div.page_title {
 
 /******************* footer *******************/
 footer {
-    height: 8vh;
+    /* height: 8vh; */
     background-color: rgba(var(--header-footer-color-rgba));
     display: flex;
     justify-content: center;
