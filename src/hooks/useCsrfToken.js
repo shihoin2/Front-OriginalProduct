@@ -8,7 +8,9 @@ const useCsrfToken = () => {
         // CSRFトークンを取得
         const fetchCsrfToken = async () => {
             const response = await axios.get(
-                'http://localhost/api/csrf-token',
+
+                'https://osyokuzi.site/api/csrf-token',
+
                 {
                     withCredentials: true,
                 },

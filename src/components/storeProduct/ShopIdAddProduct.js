@@ -54,7 +54,9 @@ const ShopIdAddProduct = () => {
         })
         try {
             const response = await axios.post(
-                `http://localhost/api/mogu_search/image/${shopId}`,
+
+                `https://osyokuzi.site/api/mogu_search/image/${shopId}`,
+
                 formData,
                 {
                     headers: {
