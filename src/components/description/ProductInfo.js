@@ -33,6 +33,7 @@ export function ProductInfo() {
     const [selectedProductReviews, setSelectedProductReviews] = useState([])
     // console.log(rateStar)
     const csrfToken = useCsrfToken()
+    console.log(csrfToken)
 
     useEffect(() => {
         getProductInfo()
@@ -41,8 +42,8 @@ export function ProductInfo() {
     const getProductInfo = async () => {
         try {
             const response = await axios.get(
-                `https://osyokuzi.site/api/mogu_search/product/${productId}`,
-                // `http://localhost/api/mogu_search/product/${productId}`,
+                // `https://osyokuzi.site/api/mogu_search/product/${productId}`,
+                `http://localhost/api/mogu_search/product/${productId}`,
             )
             setProductInfo(response.data)
             console.log(response.data)
