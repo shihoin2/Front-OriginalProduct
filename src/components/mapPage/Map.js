@@ -71,7 +71,7 @@ const NewMap = () => {
     const getMapData = async () => {
         try {
             const response = await axios.get(
-                'http://osyokuzi.site/api/mogu_search/shop',
+                'https://osyokuzi.site/api/mogu_search/shop',
             )
             setMarkerPositions(response.data)
             setFilterPosition(response.data)
@@ -153,9 +153,13 @@ const NewMap = () => {
                             disableDefaultUI={true}
                             // defaultZoom={15}
                             defaultZoom={8}
+                            // defaultCenter={{
+                            //     lat: 34.6601133,
+                            //     lng: 135.1335401,
+                            // }}
                             defaultCenter={{
-                                lat: 34.6601133,
-                                lng: 135.1335401,
+                                lat: 35.689,
+                                lng: 139.692,
                             }}
                             mapId="shopMap"
                             onLoad={map => {
