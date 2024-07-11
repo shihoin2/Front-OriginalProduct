@@ -140,7 +140,8 @@ const ShopMap = () => {
                     className="map"
                     disableDefaultUI={true}
                     defaultZoom={15}
-                    defaultCenter={{ lat: 34.6601133, lng: 135.1335401 }}
+                    // defaultCenter={{ lat: 34.6601133, lng: 135.1335401 }}
+                    defaultCenter={{ lat: 35.689, lng: 139.692 }}
                     mapId="shopMap"
                     onLoad={map => {
                         if (userLocation) {
