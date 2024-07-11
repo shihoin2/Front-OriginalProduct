@@ -71,7 +71,7 @@ const NewMap = () => {
     const getMapData = async () => {
         try {
             const response = await axios.get(
-                'http://localhost/api/mogu_search/shop',
+                'http://osyokuzi.site/api/mogu_search/shop',
             )
             setMarkerPositions(response.data)
             setFilterPosition(response.data)
