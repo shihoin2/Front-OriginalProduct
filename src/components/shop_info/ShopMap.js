@@ -1,50 +1,55 @@
 'use client'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
+import axios from 'axios'
+import { APIProvider, Map, useMap, Marker } from '@vis.gl/react-google-maps'
 
-import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api'
-import PlaceInfo from '../PlaceInfo'
-import { useState, useEffect, useRef } from 'react'
+const ShopMap = ({ lat, lng }) => {
+    const map = useMap()
 
-const defaultLatLng = {
-    lat: 35.658584,
-    lng: 139.745433,
-}
+    useEffect(() => {
+        if (map && lat && lng) {
+            const parsedLat = parseFloat(lat)
+            const parsedLng = parseFloat(lng)
+            console.log(
+                'Parsed Latitude:',
+                parsedLat,
+                'Parsed Longitude:',
+                parsedLng,
+            )
+            map.panTo({ lat: parsedLat, lng: parsedLng })
+        }
+    }, [map, lat, lng])
 
-const controlOption = {
-    mapTypeControl: false,
-    fullscreenControl: false,
-}
+    if (!lat || !lng || isNaN(lat) || isNaN(lng)) {
+        return <p>Invalid coordinates</p>
+    }
 
-const containerStyle = {
-    width: '100%',
-    height: '100%',
-}
-const position = {
-    lat: 35.658584,
-    lng: 139.745433,
-}
-
-const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY
-export default function ShopMap() {
     return (
-        // <div className="mx-auto max-w-md ">
-        <div className="flex h-40 max-w-md items-center justify-center">
-            {/* <div className="h-1/3"> */}
-            <LoadScript googleMapsApiKey={apiKey}>
-                <GoogleMap
-                    center={defaultLatLng}
-                    mapContainerStyle={containerStyle}
-                    zoom={15}
-                    options={controlOption}
+        <>
+            <div className="h-80 w-full max-w-lg">
+                <Map
+                    disableDefaultUI={true}
+                    defaultZoom={15}
+                    defaultCenter={{
+                        lat: parseFloat(lat),
+                        lng: parseFloat(lng),
+                    }}
+                    // defaultCenter={{
+                    //     lat: parseFloat(lat),
+                    //     lng: parseFloat(lng),
+                    // }}
+                    mapId="shopMap"
+                    // style={{}}
                 >
-                    <MarkerF position={position} />
-                    <PlaceInfo />
-                </GoogleMap>
-            </LoadScript>
-            {/* <div class="mx-auto max-w-md"> */}
-            {/* <div class="flex h-40 max-w-md items-center justify-center bg-blue-50"> */}
-            {/* <div class="h-20 w-20 rounded bg-blue-500"></div> */}
-        </div>
-        // </div>
-        // </div>
+                    <Marker
+                        position={{
+                            lat: parseFloat(lat),
+                            lng: parseFloat(lng),
+                        }}
+                    />
+                </Map>
+            </div>
+        </>
     )
 }
+export default ShopMap

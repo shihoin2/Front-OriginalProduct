@@ -3,7 +3,7 @@ import Image from 'next/image'
 const TopImage = () => {
     return (
         <Image
-            src="/mogusapo_top_back.png"
+            src="/top_bg_color.png"
             alt="もぐさぽトップ画像"
             priority
             className="h-full w-full"

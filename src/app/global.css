@@ -262,25 +262,6 @@ div.list_item p {
     margin: 0 auto;
 }
 
-div.next_arrow,
-div.prev_arrow {
-    position: absolute;
-    top: 50%;
-    /* transform: translateY(-50%); */
-    /* background: rgba(255, 255, 255, 0.8); */
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-div.next_arrow {
-    right: 0px;
-}
-
-div.prev_arrow {
-    left: 0px;
-}
 
 /******************* shop-list-card *******************/
 /******************* autocomplete *******************/
