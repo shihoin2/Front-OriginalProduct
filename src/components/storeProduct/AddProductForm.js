@@ -20,7 +20,7 @@ const AddProductForm = () => {
     const [message, setMessage] = useState('')
     const formRef = useRef(null)
 
-    const csrfToken = useCsrfToken()
+    // const csrfToken = useCsrfToken()
 
     const { register, handleSubmit, getValues } = useForm({
         defaultValues: {
@@ -35,6 +35,7 @@ const AddProductForm = () => {
     }
     // フォームが送信されたときに実行される関数
     const onSubmit = async data => {
+        const csrfToken = useCsrfToken()
         if (!csrfToken) {
             console.error('CSRF token is missing')
             return
@@ -52,13 +53,13 @@ const AddProductForm = () => {
         })
         try {
             const response = await axios.post(
-
                 'https://osyokuzi.site/api/mogu_search/image',
 
                 formData,
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data',
+                        'X-CSRF-TOKEN': csrfToken,
                     },
                     withCredentials: true,
                 },
