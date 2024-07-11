@@ -1,14 +1,29 @@
 import Section from '@/components/topPage/Section'
 import TopImage from '@/components/topPage/TopImage'
+import Logo from '@/components/Logo'
 import ContentsCard from '@/components/topPage/ContentsCard'
 
 const Top = () => {
     return (
         <>
-            <div className="relative w-full h-64 mt-4 overflow-hidden">
-                <TopImage />
-            </div>
+            {/* <div>
+                <div className="relative bg-fixed h-64 mt-4"> */}
+            {/* <div className="relative w-full h-64 mt-4 overflow-hidden"> */}
+            {/* <TopImage />
+                </div>
+                <h1>自宅での安全な食事をサポート</h1>
+                <Logo />
+            </div> */}
 
+            <div
+                className="mt-4 w-full h-64 bg-cover flex flex-col items-center justify-center"
+                style={{ backgroundImage: 'url(/top_bg_color.png)' }}
+            >
+                <div class="relative size-20 sm:size-28">
+                    <Logo />
+                </div>
+                <h1 className="font-bold">自宅での安全な食事をサポート</h1>
+            </div>
             <Section
                 section_title={'「もぐさぽ」とは'}
                 section_subtitle={'About'}
