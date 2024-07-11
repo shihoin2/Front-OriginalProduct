@@ -3,6 +3,7 @@ import useCsrfToken from '@/hooks/useCsrfToken'
 import { useParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import Image from 'next/image'
 import StarRating from '../storeProduct/StarRating'
 import {
     Fab,
@@ -22,6 +23,7 @@ import { BiCommentAdd } from 'react-icons/bi'
 
 export function ProductInfo() {
     const [productInfo, setProductInfo] = useState([])
+    // const [productShop, setProductShop] = useState([])
     const params = useParams()
     const productId = params.productId
     const [addReviewOpen, setAddReviewOpen] = useState(false)
@@ -39,8 +41,8 @@ export function ProductInfo() {
     const getProductInfo = async () => {
         try {
             const response = await axios.get(
-
-                `https://osyokuzi.site/api/mogu_search/product/${productId}`,
+                // `https://osyokuzi.site/api/mogu_search/product/${productId}`,
+                `http://localhost/api/mogu_search/product/${productId}`,
             )
             setProductInfo(response.data)
             console.log(response.data)
@@ -69,7 +71,6 @@ export function ProductInfo() {
         })
         try {
             const response = await axios.post(
-
                 // `http://127.0.0.1:8000/api/mogu_search/reviews`,
                 `https://osyokuzi.site/api/mogu_search/reviews`,
                 // `http://localhost:8000/api/mogu_search/reviews/${productId}`,
@@ -144,13 +145,15 @@ export function ProductInfo() {
 
     return (
         <>
-            <div className="mt-4 w-full h-auto flex flex-col sm:flex-row place-items-center sm:h-1/2 ">
-                <div className="h-1/2 sm:w-1/2 mb-4 sm:h-full">
-                    <img
-                        src={productInfo.image_path}
-                        alt="Product Image"
-                        className="product_image"
-                    />
+            <div className="mt-4 w-full h-auto flex flex-col sm:flex-row place-items-center sm:h-1/2 px-14 sm:space-x-4">
+                <div className="h-1/2 w-full sm:w-1/2 my-4 sm:h-full">
+                    <>
+                        <img
+                            src={productInfo.image_path}
+                            alt="Product Image"
+                            className="product_image"
+                        />
+                    </>
                 </div>
 
                 <div className="h-1/2  relative overflow-x-auto  sm:rounded-lg sm:w-1/2">
@@ -208,7 +211,7 @@ export function ProductInfo() {
                                     嚥下食ピラミッド
                                 </th>
 
-                                <td>
+                                <td className="px-6 py-4">
                                     {productInfo.FFPWD_code && (
                                         <>
                                             <p>{productInfo.FFPWD_code}</p>
@@ -224,7 +227,7 @@ export function ProductInfo() {
                                     UDF(ユニバーサルデザインフード)
                                 </th>
 
-                                <td>
+                                <td className="px-6 py-4">
                                     {productInfo.UDF_code && (
                                         <>
                                             <p>{productInfo.UDF_code}</p>
@@ -240,7 +243,7 @@ export function ProductInfo() {
                                     スマイルケア食
                                 </th>
 
-                                <td>
+                                <td className="px-6 py-4">
                                     {productInfo.SCF_code && (
                                         <>
                                             <p>{productInfo.SCF_code}</p>
@@ -258,7 +261,7 @@ export function ProductInfo() {
 
                                 <td
                                     colSpan={2}
-                                    className="space-x-4 bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                                    className="space-x-4 bg-white border-b dark:bg-gray-800 dark:border-gray-700 px-6 py-4"
                                 >
                                     <div className="flex space-x-5 ml-4">
                                         <AvStar
@@ -295,8 +298,53 @@ export function ProductInfo() {
                 </div>
             </div>
 
-            {/* <p>特別用途食品</p>
-            <p>{productInfo.manufacturer}</p> */}
+            <div className="relative overflow-x-auto py-10 sm:rounded-lg">
+                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <caption className="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
+                        販売店舗
+                    </caption>
+                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                店舗名
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                住所
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                電話番号
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {productInfo.shops &&
+                            productInfo.shops.map(shop => {
+                                return (
+                                    <>
+                                        <tr
+                                            key={shop.id}
+                                            className="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                                        >
+                                            <th
+                                                scope="row"
+                                                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                            >
+                                                {shop.name}
+                                            </th>
+                                            <td className="px-6 py-4">
+                                                {shop.address}
+                                            </td>
+
+                                            <td className="px-6 py-4">
+                                                {shop.tel}
+                                            </td>
+                                        </tr>
+                                    </>
+                                )
+                            })}
+                    </tbody>
+                </table>
+            </div>
 
             {/* モーダル*/}
             <Modal open={addReviewOpen} onClose={handleAddModalClose}>
@@ -407,8 +455,6 @@ export function ProductInfo() {
                     </div>
                 </Box>
             </Modal>
-
-            {/* レビューを見るモーダル */}
         </>
     )
 }

@@ -110,7 +110,7 @@ h2 {
     font-size: calc(24 / var(--root-font-size) * 1rem);
     /*24px*/
     /* ksu */
-    background-color: #aad6f9;
+    /* background-color: #aad6f9; */
 }
 
 h3 {
@@ -326,9 +326,9 @@ div.prev_arrow {
 /******************* autocomplete *******************/
 /******************* product *******************/
 .product_image {
-    max-width: 60%;
+    /* max-width: 60%; */
     height: 'auto';
-    padding: 20px;
+    /* padding: 20px; */
     margin: 0 auto;
 }
 

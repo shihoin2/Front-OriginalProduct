@@ -1,6 +1,6 @@
 'use client'
 // import ShopMap from '@/components/ShopMap'
-// import Top from '@/components/TopPage/Top'
+import Top from '@/components/topPage/Top'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Autocomplete } from '@/components/AutoComplete'
@@ -19,7 +19,9 @@ export default function Page() {
     return (
         <>
             <Header link={'/'} page_title={''} />
-            <main></main>
+            <main>
+                <Top />
+            </main>
             <Footer />
         </>
     )
