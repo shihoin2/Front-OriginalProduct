@@ -35,18 +35,19 @@ const AddProductForm = () => {
     }
     // フォームが送信されたときに実行される関数
     const onSubmit = async data => {
-        const csrfToken = useCsrfToken()
-        if (!csrfToken) {
-            console.error('CSRF token is missing')
-            return
-        }
+        // const csrfToken = useCsrfToken()
+        // if (!csrfToken) {
+        //     console.error('CSRF token is missing')
+        //     return
+        // }
         if (!file) {
             setMessage('登録する画像を選んでください')
             return
         }
         const formData = new FormData()
         formData.append('product_pic', file)
-        formData.append('_token', csrfToken)
+        // formData.append('_token', csrfToken)
+        formData.append('_token')
 
         Object.keys(data).forEach(key => {
             formData.append(key, data[key])
@@ -59,7 +60,7 @@ const AddProductForm = () => {
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'X-CSRF-TOKEN': csrfToken,
+                        // 'X-CSRF-TOKEN': csrfToken,
                     },
                     withCredentials: true,
                 },
