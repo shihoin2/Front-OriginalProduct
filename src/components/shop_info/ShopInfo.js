@@ -36,7 +36,6 @@ export function ShopInfo() {
         const getShopInfo = async () => {
             try {
                 const response = await axios.get(
-                    // `http://localhost/api/mogu_search/shop/${shopId}`,
                     `https://osyokuzi.site/api/mogu_search/shop/${shopId}`,
                 )
                 setShopInfo(response.data)

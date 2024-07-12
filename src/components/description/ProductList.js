@@ -14,7 +14,6 @@ const ProductList = () => {
         try {
             const response = await axios.get(
                 `https://osyokuzi.site/api/mogu_search/product`,
-                // `http://localhost/api/mogu_search/product`,
             )
             setAllProduct(response.data)
             console.log(response.data)

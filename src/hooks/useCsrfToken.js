@@ -10,7 +10,6 @@ const useCsrfToken = () => {
             try {
                 const response = await axios.get(
                     'https://osyokuzi.site/api/csrf-token',
-                    // 'http://localhost/api/csrf-token',
 
                     {
                         withCredentials: true,

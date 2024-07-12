@@ -42,8 +42,7 @@ export function ProductInfo() {
     const getProductInfo = async () => {
         try {
             const response = await axios.get(
-                // `https://osyokuzi.site/api/mogu_search/product/${productId}`,
-                `http://localhost/api/mogu_search/product/${productId}`,
+                `https://osyokuzi.site/api/mogu_search/product/${productId}`,
             )
             setProductInfo(response.data)
             console.log(response.data)
@@ -72,9 +71,7 @@ export function ProductInfo() {
         })
         try {
             const response = await axios.post(
-                // `http://127.0.0.1:8000/api/mogu_search/reviews`,
                 `https://osyokuzi.site/api/mogu_search/reviews`,
-                // `http://localhost:8000/api/mogu_search/reviews/${productId}`,
 
                 {
                     content: review,
