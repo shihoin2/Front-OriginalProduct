@@ -22,7 +22,7 @@ const ShopIdAddProduct = () => {
     const [message, setMessage] = useState('')
     const formRef = useRef(null)
 
-    // const csrfToken = useCsrfToken()
+    const csrfToken = useCsrfToken()
 
     const { register, handleSubmit, getValues } = useForm({
         defaultValues: {
@@ -37,17 +37,17 @@ const ShopIdAddProduct = () => {
     }
     // フォームが送信されたときに実行される関数
     const onSubmit = async data => {
-        // if (!csrfToken) {
-        //     console.error('CSRF token is missing')
-        //     return
-        // }
+        if (!csrfToken) {
+            console.error('CSRF token is missing')
+            return
+        }
         if (!file) {
             setMessage('登録する画像を選んでください')
             return
         }
         const formData = new FormData()
         formData.append('product_pic', file)
-        // formData.append('_token', csrfToken)
+        formData.append('_token', csrfToken)
 
         Object.keys(data).forEach(key => {
             formData.append(key, data[key])
@@ -61,7 +61,7 @@ const ShopIdAddProduct = () => {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },
-                    // withCredentials: true,
+                    withCredentials: true,
                 },
             )
 
