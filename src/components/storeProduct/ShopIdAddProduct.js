@@ -48,7 +48,6 @@ const ShopIdAddProduct = () => {
         const formData = new FormData()
         formData.append('product_pic', file)
         // formData.append('_token', csrfToken)
-        formData.append('_token')
 
         Object.keys(data).forEach(key => {
             formData.append(key, data[key])
@@ -62,7 +61,7 @@ const ShopIdAddProduct = () => {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },
-                    withCredentials: true,
+                    // withCredentials: true,
                 },
             )
 
