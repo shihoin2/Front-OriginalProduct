@@ -7,17 +7,21 @@ const useCsrfToken = () => {
     useEffect(() => {
         // CSRFトークンを取得
         const fetchCsrfToken = async () => {
-            const response = await axios.get(
-                // 'https://osyokuzi.site/api/csrf-token',
-                'http://localhost/api/csrf-token',
+            try {
+                const response = await axios.get(
+                    // 'https://osyokuzi.site/api/csrf-token',
+                    'http://localhost/api/csrf-token',
 
-                {
-                    withCredentials: true,
-                },
-            )
-            setCsrfToken(response.data.csrf_token)
+                    {
+                        withCredentials: true,
+                    },
+                )
+                console.log('CSRF Token:', response.data.csrf_token)
+                setCsrfToken(response.data.csrf_token)
+            } catch (error) {
+                console.error('Failed to fetch CSRF token', error)
+            }
         }
-
         fetchCsrfToken()
     }, [])
     return csrfToken
