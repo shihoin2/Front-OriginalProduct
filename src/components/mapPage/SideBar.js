@@ -46,6 +46,7 @@ const SideBar = ({
     const handleAddShop = async () => {
         try {
             const response = await axios.post(
+                // 'https://osyokuzi.site/api/mogu_search/shop',
                 'http://localhost/api/mogu_search/shop',
                 {
                     name: selectedPlace.name,
@@ -134,63 +135,7 @@ const SideBar = ({
                     </>
                 )}
             </div>
-            {/* <Modal open={addShopOpen} onClose={handleAddShopModalClose}>
-                <Box
-                    sx={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        width: 400,
-                        bgcolor: 'background.paper',
-                        border: '2px solid #000',
-                        boxShadow: 24,
-                        p: 4,
-                    }}
-                >
-                    <Box
-                        display="flex"
-                        justifyContent="space-between"
-                        alignItems="center"
-                        mb={2}
-                    >
-                        <Typography variant="h6" component="h2">
-                            店舗を登録
-                        </Typography>
-                    </Box>
-                    <Box display="flex" flexDirection="column" gap={2}>
-                        <Typography>店舗名で検索</Typography>
-                        <SearchBox onPlaceSelect={handleAddShopPlaceSelect} />
-                        <TextField
-                            label="店舗名"
-                            value={selectedPlace.name}
-                            fullWidth
-                            variant="outlined"
-                            margin="normal"
-                        />
-                        <TextField
-                            label="住所"
-                            value={selectedPlace.address}
-                            fullWidth
-                            variant="outlined"
-                            margin="normal"
-                        />
-                        <TextField
-                            label="電話番号"
-                            value={selectedPlace.tel}
-                            fullWidth
-                            variant="outlined"
-                            margin="normal"
-                        />
-                        <input type="hidden" value={selectedPlace.lat} />
-                        <input type="hidden" value={selectedPlace.lng} />
-                        <Button type={'button'} onClick={handleAddShop}>
-                            店舗を登録
-                        </Button>
-                    </Box>
-                </Box>
-            </Modal> */}
-            {/* Tailwind CSS Modal */}
+
             {addShopOpen && (
                 <div className="fixed z-10 inset-0 overflow-y-auto">
                     <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
