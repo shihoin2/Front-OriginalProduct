@@ -60,6 +60,7 @@ const ShopIdAddProduct = () => {
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data',
+                        'X-CSRF-TOKEN': csrfToken,
                     },
                     withCredentials: true,
                 },
