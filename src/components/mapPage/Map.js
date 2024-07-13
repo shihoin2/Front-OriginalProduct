@@ -11,37 +11,36 @@ import {
     useMapsLibrary,
 } from '@vis.gl/react-google-maps'
 import MarkerWithInfoWindow from '@/components/mapComponent/MapInfoWindow'
+import AddShopBar from '../addShop/AddShopBar'
 import ShopListCard from '@/components/ShopListCard'
-// import { Autocomplete } from '@/components/AutoComplete'
 import SideBar from '@/components/mapPage/SideBar'
 
 const NewMap = () => {
-    // 登録している店舗情報の一覧
-    const [markerPositions, setMarkerPositions] = useState([])
-    const [selectedShopId, setSelectedShopId] = useState(null)
-
+    // const [selectedShopId, setSelectedShopId] = useState(null)
     const [userLocation, setUserLocation] = useState(null)
-    const [filteredPositions, setFilteredPositions] = useState([])
     const [showShopList, setShowShopList] = useState(true)
+    const [markerPositions, setMarkerPositions] = useState([])
+    const [filteredPositions, setFilteredPositions] = useState([])
+    const [currentLocationMarker, setCurrentLocationMarker] = useState(null)
+    const [searchLocationMarker, setSearchLocationMarker] = useState(null)
+    const [showAddShopModal, setShowAddShopModal] = useState(false)
 
     const map = useMap()
 
     useEffect(() => {
-        getMapData()
         getUserLocation()
+    }, [])
+    useEffect(() => {
+        getMapData()
     }, [])
 
     useEffect(() => {
         if (!userLocation) {
             setFilteredPositions(markerPositions)
+        } else {
+            filterPositions(userLocation)
         }
-    }, [markerPositions])
-
-    // useEffect(() => {
-    //     if (userLocation) {
-    //         filterPositions(userLocation)
-    //     }
-    // }, [userLocation, markerPositions])
+    }, [markerPositions, userLocation])
 
     const getUserLocation = () => {
         if (navigator.geolocation) {
@@ -51,31 +50,46 @@ const NewMap = () => {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude,
                     }
-                    console.log(location)
+                    // console.log(location)
                     setUserLocation(location)
                     if (map) {
                         map.panTo(location)
                         map.setZoom(15)
+                        setCurrentLocationMarker({
+                            lat: location.lat,
+                            lng: location.lng,
+                        })
                     }
-                    filterPositions(location)
+                    // filterPositions(location)
                 },
                 error => {
                     console.error('Error obtaining user location', error)
+                    setDefaultCenter()
                 },
             )
         } else {
             console.error('Geolocation is not supported by this browser.')
+            setDefaultCenter()
         }
+    }
+
+    const setDefaultCenter = () => {
+        map.setCenter({
+            lat: 35.689,
+            lng: 139.692,
+        })
+        map.setZoom(8)
     }
 
     const getMapData = async () => {
         try {
             const response = await axios.get(
-                'https://osyokuzi.site/api/mogu_search/shop',
+                // 'https://osyokuzi.site/api/mogu_search/shop',
+                'http://localhost/api/mogu_search/shop',
             )
             setMarkerPositions(response.data)
-            setFilterPosition(response.data)
-            // console.log(response.data)
+            setFilteredPositions(response.data)
+            console.log(response.data)
         } catch (err) {
             console.log(err)
         }
@@ -108,15 +122,15 @@ const NewMap = () => {
         return R * c * 1000 // 距離（m）を返す
     }
 
-    const handleSlideChange = current => {
-        // const selectedMarker = markerPositions[current]
-        const selectedMarker = filteredPositions[current]
-        if (selectedMarker && map) {
-            const { latitude, longitude } = selectedMarker
-            // setSelectedShopId(selectedMarker.id)
-            map.panTo({ lat: latitude, lng: longitude })
-        }
-    }
+    // const handleSlideChange = current => {
+    //     // const selectedMarker = markerPositions[current]
+    //     const selectedMarker = filteredPositions[current]
+    //     if (selectedMarker && map) {
+    //         const { latitude, longitude } = selectedMarker
+    //         // setSelectedShopId(selectedMarker.id)
+    //         map.panTo({ lat: latitude, lng: longitude })
+    //     }
+    // }
 
     const handlePlaceSelect = useCallback(
         place => {
@@ -126,12 +140,28 @@ const NewMap = () => {
                 map.panTo(newCenter)
                 map.setZoom(15)
                 filterPositions(newCenter)
+                setSearchLocationMarker({
+                    lat: location.lat(),
+                    lng: location.lng(),
+                })
                 // setInputValue('')
                 // mapRef.current.panTo({ lat: location.lat(), lng: location.lng() })
             }
         },
         [filterPositions, map],
     )
+
+    const handleMarkerClick = useCallback(
+        position => {
+            map.panTo(position)
+            map.setZoom(15)
+        },
+        [map],
+    )
+
+    const handleShopAdded = () => {
+        getMapData()
+    }
 
     return (
         <>
@@ -140,8 +170,9 @@ const NewMap = () => {
                     <SideBar
                         handlePlaceSelect={handlePlaceSelect}
                         shops={filteredPositions}
-                        onSlideChange={handleSlideChange}
+                        // onSlideChange={handleSlideChange}
                         clickCurrentLocation={getUserLocation}
+                        onShopAdded={handleShopAdded}
                     />
                 </div>
                 {/* <SearchBox onPlaceSelect={handlePlaceSelect} /> */}
@@ -153,22 +184,20 @@ const NewMap = () => {
                             disableDefaultUI={true}
                             // defaultZoom={15}
                             defaultZoom={8}
-                            // defaultCenter={{
-                            //     lat: 34.6601133,
-                            //     lng: 135.1335401,
-                            // }}
                             defaultCenter={{
-                                lat: 35.689,
-                                lng: 139.692,
+                                lat: userLocation ? userLocation.lat : 35.689,
+                                lng: userLocation ? userLocation.lng : 139.692,
                             }}
                             mapId="shopMap"
                             onLoad={map => {
                                 if (userLocation) {
                                     map.panTo(userLocation)
+                                    setCurrentLocationMarker({
+                                        lat: userLocation.lat,
+                                        lng: userLocation.lng,
+                                    })
                                 }
                             }}
-                            // className="shopMap"
-                            // ref={mapRef}
                         >
                             {markerPositions.map((position, index) => (
                                 // {filteredPositions.map((position, index) => (
@@ -179,11 +208,35 @@ const NewMap = () => {
                                         lat: position.latitude,
                                         lng: position.longitude,
                                     }}
-                                    name={position.name}
+                                    shop_name={position.name}
                                     address={position.address}
                                     tel={position.tel}
+                                    onClick={() =>
+                                        handleMarkerClick({
+                                            lat: position.latitude,
+                                            lng: position.longitude,
+                                        })
+                                    }
                                 />
                             ))}
+                            {/* {currentLocationMarker && (
+                                <MarkerWithInfoWindow
+                                    position={currentLocationMarker}
+                                    icon={{
+                                        url: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png', //
+                                    }}
+                                    shop_name="Current Location"
+                                />
+                            )}
+                            {searchLocationMarker && (
+                                <MarkerWithInfoWindow
+                                    position={searchLocationMarker}
+                                    icon={{
+                                        url: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png',
+                                    }}
+                                    shop_name="Searched Location"
+                                />
+                            )} */}
                         </Map>
                     </div>
                 </div>

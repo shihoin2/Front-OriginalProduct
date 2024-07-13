@@ -5,16 +5,7 @@ import ContentsCard from '@/components/topPage/ContentsCard'
 
 const Top = () => {
     return (
-        <>
-            {/* <div>
-                <div className="relative bg-fixed h-64 mt-4"> */}
-            {/* <div className="relative w-full h-64 mt-4 overflow-hidden"> */}
-            {/* <TopImage />
-                </div>
-                <h1>自宅での安全な食事をサポート</h1>
-                <Logo />
-            </div> */}
-
+        <div className="px-16">
             <div
                 className="mt-4 w-full h-64 bg-cover flex flex-col items-center justify-center"
                 style={{ backgroundImage: 'url(/top_bg_color.png)' }}
@@ -74,7 +65,7 @@ const Top = () => {
                     </>
                 }
             />
-        </>
+        </div>
     )
 }
 export default Top
