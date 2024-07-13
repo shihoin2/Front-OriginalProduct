@@ -37,7 +37,8 @@ const ProductList = () => {
                                     <img
                                         src={product.image_path}
                                         alt={product.name}
-                                        className="object-cover"
+                                        // className="object-cover"
+                                        className="object-scale-down"
                                     />
                                     {/* <Image
                                         src={product.image_path}
