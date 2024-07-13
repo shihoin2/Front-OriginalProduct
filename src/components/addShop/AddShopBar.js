@@ -49,7 +49,7 @@ const AddShopBar = ({ onClose }) => {
                         店舗を登録
                     </Typography>
                     <IconButton onClick={onClose}>
-                        <CloseIcon />
+                        {/* <CloseIcon /> */}
                     </IconButton>
                 </Box>
                 <Box display="flex" flexDirection="column" gap={2}>
