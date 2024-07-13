@@ -62,13 +62,15 @@ const ShopIdAddProduct = () => {
         })
         try {
             const response = await axios.post(
-                // `https://osyokuzi.site/api/mogu_search/image/${shopId}`,
-                `http://localhost/api/mogu_search/image/${shopId}`,
+
+                `https://osyokuzi.site/api/mogu_search/image/${shopId}`,
+
 
                 formData,
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data',
+                        'X-CSRF-TOKEN': csrfToken,
                     },
                     withCredentials: true,
                 },

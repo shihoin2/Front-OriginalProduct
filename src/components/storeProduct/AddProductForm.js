@@ -20,7 +20,7 @@ const AddProductForm = () => {
     const [message, setMessage] = useState('')
     const formRef = useRef(null)
 
-    const csrfToken = useCsrfToken()
+    // const csrfToken = useCsrfToken()
 
     const { register, handleSubmit, getValues } = useForm({
         defaultValues: {
@@ -35,30 +35,32 @@ const AddProductForm = () => {
     }
     // フォームが送信されたときに実行される関数
     const onSubmit = async data => {
-        if (!csrfToken) {
-            console.error('CSRF token is missing')
-            return
-        }
+        // const csrfToken = useCsrfToken()
+        // if (!csrfToken) {
+        //     console.error('CSRF token is missing')
+        //     return
+        // }
         if (!file) {
             setMessage('登録する画像を選んでください')
             return
         }
         const formData = new FormData()
         formData.append('product_pic', file)
-        formData.append('_token', csrfToken)
+        // formData.append('_token', csrfToken)
+        formData.append('_token')
 
         Object.keys(data).forEach(key => {
             formData.append(key, data[key])
         })
         try {
             const response = await axios.post(
-
                 'https://osyokuzi.site/api/mogu_search/image',
 
                 formData,
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data',
+                        // 'X-CSRF-TOKEN': csrfToken,
                     },
                     withCredentials: true,
                 },
