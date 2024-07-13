@@ -57,7 +57,12 @@ const SearchBox = ({ onPlaceSelect }) => {
             const detailRequestOptions = {
                 // placeId,
                 placeId: placeId,
-                fields: ['geometry', 'name', 'formatted_address'],
+                fields: [
+                    'geometry',
+                    'name',
+                    'formatted_address',
+                    'formatted_phone_number',
+                ],
                 sessionToken,
             }
             console.log(detailRequestOptions)
@@ -82,21 +87,22 @@ const SearchBox = ({ onPlaceSelect }) => {
         // <div className="autocomplete-container">
         <div className="relative w-full mt-1">
             <input
-                className="autocomplete-input"
+                // className="autocomplete-input"
+                className="w-full p-2 box-border rounded border-solid border-gray-300"
                 value={inputValue}
                 onInput={event => onInputChange(event)}
                 placeholder="Search for a place"
             />
 
             {predictionResults.length > 0 && (
-                <ul className="autocomplete-list">
+                <ul className="list-none bg-white border-solid border-[#ccc] rounded-t max-h-48 overflow-y-auto z-[1000] absolute">
                     {predictionResults.map(({ place_id, description }) => {
                         // {predictionResults.map(({ place_id, description }) => {
                         return (
                             <li
                                 key={place_id}
                                 // key={placeId}
-                                className="autocomplete-list-item"
+                                className="p-2 cursor-pointer hover:bg-[#f0f0f0]"
                                 onClick={() => handleSuggestionClick(place_id)}
                                 // onClick={() => handleSuggestionClick(placeID)}
                             >
