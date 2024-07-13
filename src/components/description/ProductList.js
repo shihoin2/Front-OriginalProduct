@@ -13,8 +13,7 @@ const ProductList = () => {
     const getAllProduct = async () => {
         try {
             const response = await axios.get(
-                // `https://osyokuzi.site/api/mogu_search/product/${productId}`,
-                `http://localhost/api/mogu_search/product`,
+                `https://osyokuzi.site/api/mogu_search/product`,
             )
             setAllProduct(response.data)
             console.log(response.data)
@@ -38,6 +37,7 @@ const ProductList = () => {
                                     <img
                                         src={product.image_path}
                                         alt={product.name}
+
                                         className="object-scale-down h-full w-full"
                                     />
                                     {/* <Image
