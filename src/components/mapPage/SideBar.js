@@ -46,7 +46,9 @@ const SideBar = ({
     const handleAddShop = async () => {
         try {
             const response = await axios.post(
+
                 'https://osyokuzi.site/api/mogu_search/shop',
+
                 {
                     name: selectedPlace.name,
                     address: selectedPlace.address,
