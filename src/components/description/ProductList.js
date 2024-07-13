@@ -24,7 +24,7 @@ const ProductList = () => {
 
     return (
         <section className="text-gray-600 body-font">
-            <div className="container px-5 py-16 mx-auto">
+            <div className="container px-16  mx-auto">
                 <div className="text-2xl text-center py-8">登録商品一覧</div>
                 <div className="flex flex-wrap -m-4">
                     {allProduct.map(product => (
@@ -33,7 +33,7 @@ const ProductList = () => {
                             className="lg:w-1/4 md:w-1/2 p-4 w-full"
                         >
                             <Link href={`/product/${product.id}`}>
-                                <div className="block relative h-48 rounded overflow-hidden">
+                                <div className="block relative h-48 rounded overflow-hidden bg-[#F7F7F7]">
                                     <img
                                         src={product.image_path}
                                         alt={product.name}
