@@ -10,17 +10,22 @@ import React, {
     useImperativeHandle,
 } from 'react'
 import { useParams } from 'next/navigation'
+// import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { IoCloudUploadOutline } from 'react-icons/io5'
 import Button from '../common/Button'
+import { RouteRounded } from '@mui/icons-material'
 
 const ShopIdAddProduct = () => {
     const params = useParams()
     const shopId = params.shopId
     const [file, setFile] = useState(null)
+    const [fileName, setFileName] = useState(`画像は選択されていません`)
     const [message, setMessage] = useState('')
     const formRef = useRef(null)
+    const router = useRouter()
 
     const csrfToken = useCsrfToken()
 
@@ -34,6 +39,9 @@ const ShopIdAddProduct = () => {
     })
     const handleFileChange = e => {
         setFile(e.target.files[0])
+        console.log(e.target.files[0])
+        setFileName(e.target.files[0].name)
+        console.log(e.target.files[0].name)
     }
     // フォームが送信されたときに実行される関数
     const onSubmit = async data => {
@@ -66,8 +74,9 @@ const ShopIdAddProduct = () => {
                 },
             )
 
-            if (response.status === 200) {
+            if (response.status === 200 || response.status === 201) {
                 console.log('Form submitted successfully')
+                router.push(`/map/shop/${shopId}`)
             } else {
                 console.log('Form submission failed')
             }
@@ -78,25 +87,34 @@ const ShopIdAddProduct = () => {
 
     return (
         <>
-            <div className="flex sm:flex-row space-x-4 mx-4 w-full">
-                <div className="flex items-center justify-left w-1/2">
+            <div className="flex sm:flex-row justify-between space-x-4 py-10 w-full h-full">
+                {/* <div className="flex items-center justify-left w-1/2"> */}
+                <div className="items-center justify-left w-1/2">
                     <label
                         htmlFor="dropzone-file"
-                        className="flex flex-col items-center justify-center w-full h-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100 "
+                        className="flex flex-col items-center justify-center w-full h-5/6 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100 "
                     >
-                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                            <IoCloudUploadOutline color="gray" size={50} />
+                        {file ? (
+                            <img
+                                src={URL.createObjectURL(file)}
+                                alt="File Preview"
+                                className="object-scale-down h-full"
+                            />
+                        ) : (
+                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                <IoCloudUploadOutline color="gray" size={50} />
 
-                            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                                <span className="font-semibold">
-                                    Click to upload
-                                </span>{' '}
-                                or drag and drop
-                            </p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">
-                                SVG, PNG, JPG or GIF (MAX. 800x400px)
-                            </p>
-                        </div>
+                                <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                                    <span className="font-semibold">
+                                        Click to upload
+                                    </span>{' '}
+                                    or drag and drop
+                                </p>
+                                <p className="text-xs text-gray-500 dark:text-gray-400">
+                                    SVG, PNG, JPG or GIF (MAX. 800x400px)
+                                </p>
+                            </div>
+                        )}
                         <input
                             id="dropzone-file"
                             type="file"
@@ -104,16 +122,19 @@ const ShopIdAddProduct = () => {
                             className="hidden"
                         />
                     </label>
+                    <div className="flex-col items-center h-1/6 ">
+                        {fileName}
+                    </div>
                 </div>
 
                 <div className="w-1/2 flex justify-items-end">
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <table className=" text-sm text-left rtl:text-right">
+                        <table className="w-full  text-sm text-left rtl:text-right">
                             <tbody>
-                                <tr className="border-b border-gray-200 dark:border-gray-700">
+                                <tr className="border-b border-gray-200 dark:border-gray-700 min-w-36">
                                     <th
                                         scope="row"
-                                        className="px-6 py-4 font-medium whitespace-nowrap bg-[#F7F7F7]"
+                                        className="px-6 py-4  font-medium whitespace-nowrap bg-[#F7F7F7]"
                                     >
                                         <label htmlFor="product-name">
                                             商品名

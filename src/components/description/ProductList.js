@@ -35,13 +35,18 @@ const ProductList = () => {
                         >
                             <Link href={`/product/${product.id}`}>
                                 <div className="block relative h-48 rounded overflow-hidden">
-                                    <Image
+                                    <img
+                                        src={product.image_path}
+                                        alt={product.name}
+                                        className="object-scale-down h-full w-full"
+                                    />
+                                    {/* <Image
                                         src={product.image_path}
                                         alt={product.name}
                                         priority
                                         fill
                                         className="object-cover"
-                                    />
+                                    /> */}
                                 </div>
                             </Link>
                             <div className="mt-4">

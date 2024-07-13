@@ -151,7 +151,7 @@ export function ProductInfo() {
                         <img
                             src={productInfo.image_path}
                             alt="Product Image"
-                            className="product_image"
+                            className="object-scale-down w-full h-full"
                         />
                     </>
                 </div>
