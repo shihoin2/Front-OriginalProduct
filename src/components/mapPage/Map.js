@@ -84,8 +84,8 @@ const NewMap = () => {
     const getMapData = async () => {
         try {
             const response = await axios.get(
-                // 'https://osyokuzi.site/api/mogu_search/shop',
-                'http://localhost/api/mogu_search/shop',
+                'https://osyokuzi.site/api/mogu_search/shop',
+                // 'http://localhost/api/mogu_search/shop',
             )
             setMarkerPositions(response.data)
             setFilteredPositions(response.data)
