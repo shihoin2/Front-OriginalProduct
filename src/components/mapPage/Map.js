@@ -211,6 +211,7 @@ const NewMap = () => {
                                     shop_name={position.name}
                                     address={position.address}
                                     tel={position.tel}
+                                    shopId={position.id}
                                     onClick={() =>
                                         handleMarkerClick({
                                             lat: position.latitude,

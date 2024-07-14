@@ -163,6 +163,7 @@ const ShopMap = () => {
                             name={position.name}
                             address={position.address}
                             tel={position.tel}
+                            shopId={position.id}
                         />
                     ))}
                 </Map>

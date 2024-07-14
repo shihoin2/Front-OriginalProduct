@@ -11,8 +11,15 @@ import {
     Pin,
 } from '@vis.gl/react-google-maps'
 import { Button } from '@mui/material'
+import Link from 'next/link'
 
-const MarkerWithInfoWindow = ({ position, shop_name, address, tel }) => {
+const MarkerWithInfoWindow = ({
+    position,
+    shop_name,
+    address,
+    tel,
+    shopId,
+}) => {
     const [markerRef, marker] = useAdvancedMarkerRef()
 
     const [infoWindowShown, setInfoWindowShown] = useState(false)
@@ -22,6 +29,7 @@ const MarkerWithInfoWindow = ({ position, shop_name, address, tel }) => {
         [],
     )
     const handleClose = useCallback(() => setInfoWindowShown(false), [])
+    console.log(shopId)
 
     return (
         <>
@@ -49,13 +57,19 @@ const MarkerWithInfoWindow = ({ position, shop_name, address, tel }) => {
                                     <h1 className="text-gray-900 text-xl title-font font-medium mb-1">
                                         {shop_name}
                                     </h1>
-                                    <div className="flex mb-4"></div>
-                                    <p className="leading-relaxed">{address}</p>
-                                    <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5"></div>
+
+                                    <p className="l">{address}</p>
+
+                                    <p className="leading-relaxed">
+                                        Tell：{tel}
+                                    </p>
+                                    <div className="flex my-2 items-center border-b-2 border-gray-100 mb-5"></div>
                                     <div className="flex">
-                                        <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-                                            Button
-                                        </button>
+                                        <Link href={`map/shop/${shopId}`}>
+                                            <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                                                店舗ページへ
+                                            </button>
+                                        </Link>
                                     </div>
                                 </div>
                                 {/* </div> */}
