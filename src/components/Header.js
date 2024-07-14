@@ -11,9 +11,9 @@ import { FaListUl } from 'react-icons/fa'
 
 export default function Page({ link, page_title }) {
     return (
-        <header className="h-16">
+        <header className="h-16 mx-auto">
             {/* <header class="px-5 py-5 lg:px-5 lg:pl-3"> */}
-            <div className="justify-between flex flex-row w-full">
+            <div className="justify-between flex flex-row mx-auto w-full max-w-7xl">
                 <div className="relative size-12">
                     <Link href={'/'}>
                         <Logo />

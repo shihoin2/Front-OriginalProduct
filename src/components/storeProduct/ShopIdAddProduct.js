@@ -89,7 +89,11 @@ const ShopIdAddProduct = () => {
 
     return (
         <>
+
+        <h1 className="text-xl mt-10">商品登録</h1>
             <div className="flex sm:flex-row justify-between space-x-4 py-10 w-full h-full">
+
+
                 {/* <div className="flex items-center justify-left w-1/2"> */}
                 <div className="items-center justify-left w-1/2">
                     <label
@@ -129,7 +133,7 @@ const ShopIdAddProduct = () => {
                     </div>
                 </div>
 
-                <div className="w-1/2 flex justify-items-end">
+                <div className="flex justify-items-end">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <table className="w-full  text-sm text-left rtl:text-right">
                             <tbody>

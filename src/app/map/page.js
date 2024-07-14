@@ -11,6 +11,7 @@ import {
 import ShopMap from '@/components/ShopMap'
 import NewMap from '@/components/mapPage/Map'
 import SideBar from '@/components/mapPage/SideBar'
+import MapHeader from '@/components/mapPage/MapHeader'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import React from 'react'
@@ -18,8 +19,8 @@ import React from 'react'
 export default function Page() {
     return (
         <>
-            <Header link={'/'} page_title={'Map'} />
-            <main>
+            <MapHeader link={'/'} page_title={'Map'} />
+            {/* <main > */}
                 {/* <div className="flex"> */}
                 {/* <SideBar /> */}
                 {/* <div className="google_map"> */}
@@ -34,7 +35,7 @@ export default function Page() {
                 </APIProvider>
                 {/* </div> */}
                 {/* </div> */}
-            </main>
+            {/* </main> */}
             <Footer />
         </>
     )

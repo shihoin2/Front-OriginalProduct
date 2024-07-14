@@ -96,7 +96,7 @@ div.top_back {
 }
 
 main {
-    /* max-width: 1240px; */
+    max-width: 1240px;
     margin: 0 auto;
     min-height: 83vh;
 }
