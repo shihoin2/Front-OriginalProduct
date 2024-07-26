@@ -183,7 +183,7 @@ const NewMap = () => {
                             // className="map"
                             disableDefaultUI={true}
                             // defaultZoom={15}
-                            defaultZoom={8}
+                            defaultZoom={10}
                             defaultCenter={{
                                 lat: userLocation ? userLocation.lat : 35.689,
                                 lng: userLocation ? userLocation.lng : 139.692,
